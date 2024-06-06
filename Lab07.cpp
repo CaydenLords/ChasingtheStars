@@ -128,7 +128,8 @@ float gravityDirection (Position place)
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT xAccel   The horizontal component of the acceleration
  *************************************************************************/
-float getHorizontal(float accel, float angle) {
+float getHorizontal(float accel, float angle) 
+{
    return accel * sin(angle);
 }
 
@@ -139,7 +140,8 @@ float getHorizontal(float accel, float angle) {
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT yAccel   The vertical component of the acceleration
  *************************************************************************/
-float getVertical(float accel, float angle) {
+float getVertical(float accel, float angle) 
+{
    return accel * cos(angle);
 }
 
@@ -152,10 +154,23 @@ float getVertical(float accel, float angle) {
  * INPUT  pos        The location of the object (either x or y) 
  * OUTPUT newPos     Where the object is now
  *************************************************************************/
-float getDistance(float velocity, float time, float accel, float pos) {
+float getDistance(float velocity, float time, float accel, float pos) 
+{
    return pos + (velocity * time) + (0.5 * accel * time);
 }
 
+/************************************************************************
+ * Get Velocity
+ * calculates how fast an object is now moving
+ * INPUT  velocity   How fast the object is currently moving
+ * INPUT  accel      The acceleration of the object
+ * INPUT  time       How much time has passed
+ * OUTPUT newVel     How fast the object is now moving
+ *************************************************************************/
+float getVelocity(float velocity, float accel, float time)
+{
+   return velocity + (accel * time);
+}
 
 /*************************************
  * All the interesting work happens here, when
