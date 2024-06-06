@@ -76,6 +76,87 @@ public:
    double angleEarth;
 };
 
+double Position::metersFromPixels = 40.0;
+
+/************************************************************************
+ * Rotate Earth
+ * Calculates the radians the Earth is rotating
+ *  OUTPUT rotation  The radians the Earth is rotating 
+ *************************************************************************/
+float rotateEarth() 
+{
+   return -(TWO_PI / 30.0) * (TIME_DILATION/86400.0);
+}
+
+/************************************************************************
+ * Gravity
+ * Calculates the acceleration of the gravity the Earth has at a certain height
+ *  INPUT  height    The height above the Earth in meters
+ *  OUTPUT gravity   The gravity's effect in acceleration
+ *************************************************************************/
+float gravity(float height)
+{
+   return 9.80665 * (6378000.0/(6378000.0+height));
+}
+
+/************************************************************************
+ * Height Above Earth
+ * Calculates the acceleration of the gravity the Earth has at a certain height
+ *  INPUT  place    The x and y coordinates of the object, where the Earth is (0,0)
+ *  OUTPUT height   How high the object is above the Earth
+ *************************************************************************/
+float heightAboveEarth(Position place) 
+{
+   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
+}
+
+/************************************************************************
+ * Direction of Gravity
+ * Calculates what direction gravity is pulling (in radians) 
+ *  INPUT  place       The x and y coordinates of the object, where the Earth is (0,0)
+ *  OUTPUT direction   What direction gravity is pulling in radians 
+ *************************************************************************/
+float gravityDirection (Position place) 
+{
+   return atan2(0-place.getMetersX(), 0-place.getMetersY());
+}
+
+/************************************************************************
+ * Get Horizontal 
+ * calculates the horizontal component of acceleration 
+ *  INPUT  accel    The total acceleration of the object due to gravity
+ *  INPUT  angle    The direction the gravity is pulling in radians
+ *  OUTPUT xAccel   The horizontal component of the acceleration
+ *************************************************************************/
+float getHorizontal(float accel, float angle) {
+   return accel * sin(angle);
+}
+
+/************************************************************************
+ * Get Vertical
+ * calculates the vertical component of acceleration
+ *  INPUT  accel    The total acceleration of the object due to gravity
+ *  INPUT  angle    The direction the gravity is pulling in radians
+ *  OUTPUT yAccel   The vertical component of the acceleration
+ *************************************************************************/
+float getVertical(float accel, float angle) {
+   return accel * cos(angle);
+}
+
+/************************************************************************
+ * Get Distance
+ * calculates where an object moves 
+ * INPUT  velocity   How fast the object is currently moving
+ * INPUT  time       How much time has passed
+ * INPUT  accel      The acceleration of the object due to gravity
+ * INPUT  pos        The location of the object (either x or y) 
+ * OUTPUT newPos     Where the object is now
+ *************************************************************************/
+float getDistance(float velocity, float time, float accel, float pos) {
+   return pos + (velocity * time) + (0.5 * accel * time);
+}
+
+
 /*************************************
  * All the interesting work happens here, when
  * I get called back from OpenGL to draw a frame.
@@ -109,7 +190,7 @@ void callBack(const Interface* pUI, void* p)
    //
 
    // rotate the earth
-   pDemo->angleEarth += 0.01;
+   pDemo->angleEarth += rotateEarth();
    pDemo->angleShip += 0.02;
    pDemo->phaseStar++;
 
@@ -122,12 +203,12 @@ void callBack(const Interface* pUI, void* p)
 
    // draw satellites
    gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
-   gout.drawHubble    (pDemo->ptHubble,     pDemo->angleShip);
-   gout.drawSputnik   (pDemo->ptSputnik,    pDemo->angleShip);
-   gout.drawStarlink  (pDemo->ptStarlink,   pDemo->angleShip);
-   gout.drawShip      (pDemo->ptShip,       pDemo->angleShip, pUI->isSpace());
-   gout.drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
-   gout.drawGPS       (pDemo->ptOrbitStation, pDemo->angleShip);
+   gout.drawHubble(pDemo->ptHubble, pDemo->angleShip);
+   gout.drawSputnik(pDemo->ptSputnik, pDemo->angleShip);
+   gout.drawStarlink(pDemo->ptStarlink, pDemo->angleShip);
+   gout.drawShip(pDemo->ptShip, pDemo->angleShip, pUI->isSpace());
+   gout.drawGPS(pDemo->ptGPS, pDemo->angleShip);
+   gout.drawGPS(pDemo->ptOrbitStation, pDemo->angleShip);
 
    // draw parts
    pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
@@ -164,70 +245,6 @@ void callBack(const Interface* pUI, void* p)
 
 }
 
-double Position::metersFromPixels = 40.0;
-
-/************************************************************************
- * Gravity
- * Calculates the acceleration of the gravity the Earth has at a certain height
- *  INPUT  height    The height above the Earth in meters
- *  OUTPUT gravity   The gravity's effect in acceleration
- *************************************************************************/
-float gravity(float height){
-   return 9.80665 * (6378000/(6378000+height));
-}
-
-/************************************************************************
- * Height Above Earth
- * Calculates the acceleration of the gravity the Earth has at a certain height
- *  INPUT  place    The x and y coordinates of the object, where the Earth is (0,0)
- *  OUTPUT height   How high the objecct is above the Earth
- *************************************************************************/
-float heightAboveEarth(Position place) {
-   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
-}
-
-/************************************************************************
- * Direction of Gravity
- * Calculates what direction gravity is pulling (in radians) 
- *  INPUT  place       The x and y coordinates of the object, where the Earth is (0,0)
- *  OUTPUT direction   What direction gravity is pulling in radians 
- *************************************************************************/
-float gravityDirection (Position place) {
-   return atan2(0-place.getMetersX(), 0-place.getMetersY());
-}
-
-/************************************************************************
- * Get Horizontal 
- * calculates the horizontal component of acceleration 
- *  INPUT  accel    The total acceleration of the object due to gravity
- *  INPUT  angle    The direction the gravity is pulling in radians
- *  OUTPUT xAccel   The horizontal component of the acceleration
- *************************************************************************/
-float getHorizontal(float accel, float angle) {
-   return accel * sin(angle);
-}
-
-/************************************************************************
- * Get Vertical
- * calculates the vertical component of acceleration
- *  INPUT  accel    The total acceleration of the object due to gravity
- *  INPUT  angle    The direction the gravity is pulling in radians
- *  OUTPUT yAccel   The vertical component of the acceleration
- *************************************************************************/
-float getHorizontal(float accel, float angle) {
-   return accel * cos(angle);
-}
-
-/************************************************************************
- * Get Distance
- * calculates where an object moves 
- * INPUT  accel    The total acceleration of the object due to gravity
- * INPUT  angle    The direction the gravity is pulling in radians
- * OUTPUT yAccel   The vertical component of the acceleration
- *************************************************************************/
-float getHorizontal(float accel, float angle) {
-   return accel * cos(angle);
-}
 
 /*********************************
  * Initialize the simulation and set it in motion
