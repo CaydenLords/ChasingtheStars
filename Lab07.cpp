@@ -54,6 +54,8 @@ public:
 
       ptOrbitStation.setMetersX(0);
       ptOrbitStation.setMetersY(42164000);
+      ptOrbitVelocity.setMetersX(-3100.0);
+      ptOrbitVelocity.setMetersY(0.0);
 
       angleShip = 0.0;
       angleEarth = 0.0;
@@ -69,6 +71,7 @@ public:
    Position ptStar;
    Position ptUpperRight;
    Position ptOrbitStation;
+   Position ptOrbitVelocity;
 
    unsigned char phaseStar;
 
