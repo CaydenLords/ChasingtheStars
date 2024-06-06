@@ -12,10 +12,14 @@
  *****************************************************************/
 
 #include <cassert>      // for ASSERT
+#include <math.h>       // For ATAN and a bunch of other math stuff
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 using namespace std;
+#define TIME_DILATION 1440
+#define TIME_PER_FRAME 48
+#define TWO_PI 6.28318530718
 
 /*************************************************************************
  * Demo
@@ -48,6 +52,9 @@ public:
       ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
+      ptOrbitStation.setMetersX(0);
+      ptOrbitStation.setMetersY(42164000);
+
       angleShip = 0.0;
       angleEarth = 0.0;
       phaseStar = 0;
@@ -61,6 +68,7 @@ public:
    Position ptGPS;
    Position ptStar;
    Position ptUpperRight;
+   Position ptOrbitStation;
 
    unsigned char phaseStar;
 
@@ -119,6 +127,7 @@ void callBack(const Interface* pUI, void* p)
    gout.drawStarlink  (pDemo->ptStarlink,   pDemo->angleShip);
    gout.drawShip      (pDemo->ptShip,       pDemo->angleShip, pUI->isSpace());
    gout.drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
+   gout.drawGPS       (pDemo->ptOrbitStation, pDemo->angleShip);
 
    // draw parts
    pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
@@ -148,9 +157,77 @@ void callBack(const Interface* pUI, void* p)
    // draw the earth
    pt.setMeters(0.0, 0.0);
    gout.drawEarth(pt, pDemo->angleEarth);
+
+   //get the height of the satellite above the Earth and the acceleration gravity causes
+   float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
+   float orbitGravity = gravity(orbitHeight);
+
 }
 
 double Position::metersFromPixels = 40.0;
+
+/************************************************************************
+ * Gravity
+ * Calculates the acceleration of the gravity the Earth has at a certain height
+ *  INPUT  height    The height above the Earth in meters
+ *  OUTPUT gravity   The gravity's effect in acceleration
+ *************************************************************************/
+float gravity(float height){
+   return 9.80665 * (6378000/(6378000+height));
+}
+
+/************************************************************************
+ * Height Above Earth
+ * Calculates the acceleration of the gravity the Earth has at a certain height
+ *  INPUT  place    The x and y coordinates of the object, where the Earth is (0,0)
+ *  OUTPUT height   How high the objecct is above the Earth
+ *************************************************************************/
+float heightAboveEarth(Position place) {
+   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
+}
+
+/************************************************************************
+ * Direction of Gravity
+ * Calculates what direction gravity is pulling (in radians) 
+ *  INPUT  place       The x and y coordinates of the object, where the Earth is (0,0)
+ *  OUTPUT direction   What direction gravity is pulling in radians 
+ *************************************************************************/
+float gravityDirection (Position place) {
+   return atan2(0-place.getMetersX(), 0-place.getMetersY());
+}
+
+/************************************************************************
+ * Get Horizontal 
+ * calculates the horizontal component of acceleration 
+ *  INPUT  accel    The total acceleration of the object due to gravity
+ *  INPUT  angle    The direction the gravity is pulling in radians
+ *  OUTPUT xAccel   The horizontal component of the acceleration
+ *************************************************************************/
+float getHorizontal(float accel, float angle) {
+   return accel * sin(angle);
+}
+
+/************************************************************************
+ * Get Vertical
+ * calculates the vertical component of acceleration
+ *  INPUT  accel    The total acceleration of the object due to gravity
+ *  INPUT  angle    The direction the gravity is pulling in radians
+ *  OUTPUT yAccel   The vertical component of the acceleration
+ *************************************************************************/
+float getHorizontal(float accel, float angle) {
+   return accel * cos(angle);
+}
+
+/************************************************************************
+ * Get Distance
+ * calculates where an object moves 
+ * INPUT  accel    The total acceleration of the object due to gravity
+ * INPUT  angle    The direction the gravity is pulling in radians
+ * OUTPUT yAccel   The vertical component of the acceleration
+ *************************************************************************/
+float getHorizontal(float accel, float angle) {
+   return accel * cos(angle);
+}
 
 /*********************************
  * Initialize the simulation and set it in motion
