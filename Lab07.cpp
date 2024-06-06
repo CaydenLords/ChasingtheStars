@@ -17,8 +17,8 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 using namespace std;
-#define TIME_DILATION 1440
-#define TIME_PER_FRAME 48
+#define TIME_DILATION 1440.0
+#define TIME_PER_FRAME 48.0
 #define TWO_PI 6.28318530718
 
 /*************************************************************************
@@ -53,8 +53,10 @@ public:
       ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
       ptOrbitStation.setMetersX(0);
-      ptOrbitStation.setMetersY(42164000);
-     
+      ptOrbitStation.setMetersY(42164000.0);
+      ptOrbitVelocity.setMetersX(-3100.0);
+      ptOrbitVelocity.setMetersY(0.0);
+
       angleShip = 0.0;
       angleEarth = 0.0;
       phaseStar = 0;
@@ -69,6 +71,7 @@ public:
    Position ptStar;
    Position ptUpperRight;
    Position ptOrbitStation;
+   Position ptOrbitVelocity;
 
    unsigned char phaseStar;
 
@@ -107,7 +110,7 @@ float gravity(float height)
  *************************************************************************/
 float heightAboveEarth(Position place) 
 {
-   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
+   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000.0;
 }
 
 /************************************************************************
@@ -118,7 +121,7 @@ float heightAboveEarth(Position place)
  *************************************************************************/
 float gravityDirection (Position place) 
 {
-   return atan2(0-place.getMetersX(), 0-place.getMetersY());
+   return atan2(0.0-place.getMetersX(), 0.0-place.getMetersY());
 }
 
 /************************************************************************
@@ -257,6 +260,11 @@ void callBack(const Interface* pUI, void* p)
    //get the height of the satellite above the Earth and the acceleration gravity causes
    float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
    float orbitGravity = gravity(orbitHeight);
+
+
+   //Move the Satellite
+   pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersX()));
+   pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersY()));
 
 }
 
