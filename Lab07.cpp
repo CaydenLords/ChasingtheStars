@@ -17,8 +17,8 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 using namespace std;
-#define TIME_DILATION 1440
-#define TIME_PER_FRAME 48
+#define TIME_DILATION 1440.0
+#define TIME_PER_FRAME 48.0
 #define TWO_PI 6.28318530718
 
 /*************************************************************************
@@ -260,6 +260,11 @@ void callBack(const Interface* pUI, void* p)
    //get the height of the satellite above the Earth and the acceleration gravity causes
    float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
    float orbitGravity = gravity(orbitHeight);
+
+
+   //Move the Satellite
+   pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersX()));
+   pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersY()));
 
 }
 
