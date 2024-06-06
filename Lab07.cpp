@@ -107,7 +107,7 @@ float gravity(float height)
  *************************************************************************/
 float heightAboveEarth(Position place) 
 {
-   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000.0;
+   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
 }
 
 /************************************************************************
@@ -118,7 +118,7 @@ float heightAboveEarth(Position place)
  *************************************************************************/
 float gravityDirection (Position place) 
 {
-   return atan2(0.0-place.getMetersX(), 0.0-place.getMetersY());
+   return atan2(0-place.getMetersX(), 0-place.getMetersY());
 }
 
 /************************************************************************
