@@ -54,7 +54,7 @@ public:
 
       ptOrbitStation.setMetersX(0);
       ptOrbitStation.setMetersY(42164000);
-
+     
       angleShip = 0.0;
       angleEarth = 0.0;
       phaseStar = 0;
@@ -107,7 +107,7 @@ float gravity(float height)
  *************************************************************************/
 float heightAboveEarth(Position place) 
 {
-   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000;
+   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000.0;
 }
 
 /************************************************************************
@@ -118,7 +118,7 @@ float heightAboveEarth(Position place)
  *************************************************************************/
 float gravityDirection (Position place) 
 {
-   return atan2(0-place.getMetersX(), 0-place.getMetersY());
+   return atan2(0.0-place.getMetersX(), 0.0-place.getMetersY());
 }
 
 /************************************************************************
