@@ -52,7 +52,7 @@ public:
       ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
-      ptOrbitStation.setMetersX(0);
+      ptOrbitStation.setMetersX(0.0);
       ptOrbitStation.setMetersY(42164000.0);
       ptOrbitVelocity.setMetersX(-3100.0);
       ptOrbitVelocity.setMetersY(0.0);
@@ -88,7 +88,7 @@ double Position::metersFromPixels = 40.0;
  *************************************************************************/
 float rotateEarth() 
 {
-   return (TWO_PI / -30.0) * (TIME_DILATION/86400.0);
+   return (TWO_PI / -30.0) * (TIME_DILATION / 86400.0);
 }
 
 /************************************************************************
@@ -99,7 +99,7 @@ float rotateEarth()
  *************************************************************************/
 float gravity(float height)
 {
-   return 9.80665 * (6378000.0/(6378000.0+height));
+   return 9.80665 * pow(6378000.0/(6378000.0 + height), 2);
 }
 
 /************************************************************************
@@ -110,7 +110,7 @@ float gravity(float height)
  *************************************************************************/
 float heightAboveEarth(Position place) 
 {
-   return sqrt(place.getMetersX() * place.getMetersX() * place.getMetersY() * place.getMetersY()) - 6378000.0;
+   return sqrt(place.getMetersX() * place.getMetersX() + place.getMetersY() * place.getMetersY()) - 6378000.0;
 }
 
 /************************************************************************
@@ -159,7 +159,7 @@ float getVertical(float accel, float angle)
  *************************************************************************/
 float getDistance(float velocity, float time, float accel, float pos) 
 {
-   return pos + (velocity * time) + (0.5 * accel * time);
+   return pos + (velocity * time) + (0.5 * accel * time * time);
 }
 
 /************************************************************************
@@ -259,12 +259,22 @@ void callBack(const Interface* pUI, void* p)
 
    //get the height of the satellite above the Earth and the acceleration gravity causes
    float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
-   float orbitGravity = gravity(orbitHeight);
+   float orbitGravityAcceleration = gravity(orbitHeight);
 
+   // Get the angle of gravity on the ship, horizontal and vertical components
+   float gravityAngle = gravityDirection(pDemo->ptOrbitStation);
+   float xComp = getHorizontal(orbitGravityAcceleration, gravityAngle);
+   float yComp = getVertical(orbitGravityAcceleration, gravityAngle);
+
+   // Update ship's velocity
+   pDemo->ptOrbitVelocity.setMetersX(getVelocity(pDemo->ptOrbitVelocity.getMetersX(), xComp, TIME_PER_FRAME));
+   pDemo->ptOrbitVelocity.setMetersY(getVelocity(pDemo->ptOrbitVelocity.getMetersY(), yComp, TIME_PER_FRAME));
 
    //Move the Satellite
-   pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersX()));
-   pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, 0.0, pDemo->ptOrbitStation.getMetersY()));
+   pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, xComp, pDemo->ptOrbitStation.getMetersX()));
+   pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, yComp, pDemo->ptOrbitStation.getMetersY()));
+
+   
 
 }
 
