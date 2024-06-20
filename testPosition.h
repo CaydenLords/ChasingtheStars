@@ -10,138 +10,226 @@
 
 #pragma once
 
-#include <iostream>
 #include "position.h"
-#include <cassert>
-
-using namespace std;
+#include "unitTest.h"
 
 /*******************************
  * TEST Position
  * A friend class for Position which contains the Position unit tests
  ********************************/
-class TestPosition
+class TestPosition : public UnitTest
 {
 public:
    void run()
    {
-      Position().setZoom(1000.0 /* 1km equals 1 pixel */);
-      defaultConstructor();
-      nonDefaultConstructor();
-      copyConstructor();
-      assignment();
+      // Constructors
+      construct_default();
+      construct_nonDefault();
+      construct_copy();
+      assign();
  
-      setPixels();
-      setMeters();
+      // Setters
+      setMetersX();
+      setMetersY();
       
-      addPixels();
-      addMeters();
+      // Getters
+      getMetersX();
+      getMetersY();
+
+      report("Position");
    }
    
 private:
-   // utility funciton because floating point numbers are approximations
-   bool closeEnough(double value, double test, double tolerence) const
+
+   /*********************************************
+    * name:    DEFAULT CONSTRUCTOR
+    * input:   nothing
+    * output:  pos=(0, 0))
+    *********************************************/
+   void construct_default()
    {
-      double difference = value - test;
-      return (difference >= -tolerence) && (difference <= tolerence);
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
+      // exercise
+      Position pos;
+      // verify
+      assertEquals(pos.x, 0.0);
+      assertEquals(pos.y, 0.0);
+      assertEquals(pos.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
    }
 
-   void defaultConstructor() const
-   {  // setup
+   /*********************************************
+    * name:    NON-DEFAULT CONSTRUCTOR
+    * input:   x=120.0, y=360.0
+    * output:  pos=(120.0, 360.0)
+    *********************************************/
+   void construct_nonDefault()
+   {
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
+      double x = 120.0;
+      double y = 360.0;
       // exercise
-      Position pos;
+      Position pos(x, y);
       // verify
-      assert(pos.x == 0.0);
-      assert(pos.y == 0.0);
-   }  // teardown
+      assertEquals(pos.x, 120.0);
+      assertEquals(pos.y, 360.0);
+      assertEquals(pos.metersFromPixels, 99.9);
+      assertEquals(x, 120.0);
+      assertEquals(y, 360.0);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
 
-   void nonDefaultConstructor() const
-   {  // setup
+   /*********************************************
+    * name:    COPY CONSTRUCTOR
+    * input:   posRHS = (1234.5, 6789.0)
+    * output:  pos = (1234.5, 6789.0)
+    *********************************************/
+   void construct_copy()
+   {
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
+      Position posRHS;
+      posRHS.x = 1234.5;
+      posRHS.y = 6789.0;
       // exercise
-      Position pos(3000.0, 9000.0);
+      Position pos(posRHS);
       // verify
-      assert(pos.x == 3000.0);
-      assert(pos.y == 9000.0);
-   }  // teardown
+      assertEquals(posRHS.x, 1234.5);
+      assertEquals(posRHS.y, 6789.0);
+      assertEquals(posRHS.metersFromPixels, 99.9);
+      assertEquals(pos.x, 1234.5);
+      assertEquals(pos.y, 6789.0);
+      assertEquals(pos.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
 
-   void copyConstructor() const
-   {  // setup
-      Position pos1;
-      pos1.x = 4000.0;
-      pos1.y = 2000.0;
+   /*********************************************
+    * name:    ASSIGNMENT OPERATOR
+    * input:   posLHS=(-99.9, -88.8)  posRHS=(24.68, -13,57)
+    * output:  posLHS=(24.68, -13,57)
+    *********************************************/
+   void assign()
+   {
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
+      Position posLHS;
+      posLHS.x = -99.9;
+      posLHS.y = -88.8;
+      Position posRHS;
+      posRHS.x = 24.68;
+      posRHS.y = -13.57;
       // exercise
-      Position pos2(pos1);
+      posLHS = posRHS;
       // verify
-      assert(pos1.x == 4000.0);
-      assert(pos1.y == 2000.0);
-      assert(pos2.x == 4000.0);
-      assert(pos2.y == 2000.0);
-   }  // teardown
+      assertEquals(posRHS.x, 24.68);
+      assertEquals(posRHS.y, -13.57);
+      assertEquals(posRHS.metersFromPixels, 99.9);
+      assertEquals(posLHS.x, 24.68);
+      assertEquals(posLHS.y, -13.57);
+      assertEquals(posLHS.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
+   
+   /*********************************************
+    * name:    GET METERS X
+    * input:   pos=(4500.0, 2500.0)
+    * output:  x=4500.0
+    *********************************************/
+   void getMetersX()
+   {
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
+      Position pos;
+      pos.x = 4500.0;
+      pos.y = 2500.0;
+      // exercise
+      double x = pos.getMetersX();
+      // verify
+      assertEquals(x, 4500.0);
+      assertEquals(pos.x, 4500.0);
+      assertEquals(pos.y, 2500.0);
+      assertEquals(pos.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
 
-   void assignment() const
-   {  // setup
-      Position pos1;
-      pos1.x = 4000.0;
-      pos1.y = 2000.0;
-      // exercise
-      Position pos2 = pos1;
-      // verify
-      assert(pos1.x == 4000.0);
-      assert(pos1.y == 2000.0);
-      assert(pos2.x == 4000.0);
-      assert(pos2.y == 2000.0);
-   }  // teardown
-   
-   void setMeters() const
-   {  // setup
+   /*********************************************
+    * name:    GET METERS Y
+    * input:   pos=(4500.0, 2500.0)
+    * output:  y=4500.0
+    *********************************************/
+   void getMetersY()
+   {
+      // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
       Position pos;
-      pos.x = 0.0;
-      pos.y = 0.0;
+      pos.x = 4500.0;
+      pos.y = 2500.0;
       // exercise
-      pos.setMetersX(5000.0);
-      pos.setMetersY(3000.0);
+      double y = pos.getMetersY();
       // verify
-      assert(pos.x == 5000.0);
-      assert(pos.y == 3000.0);
-   }  // teardown
- 
-   void setPixels() const
+      assertEquals(pos.x, 4500.0);
+      assertEquals(pos.y, 2500.0);
+      assertEquals(pos.metersFromPixels, 99.9);
+      assertEquals(y, 2500.0);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
+
+   /*********************************************
+    * name:    SET METERS Y
+    * input:   pos=(999.9, 888.8) x = 123.4
+    * output:  pos=(123.4, 888.8)
+    *********************************************/
+   void setMetersX()
    {  // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
       Position pos;
-      pos.x = 0.0;
-      pos.y = 0.0;
+      pos.x = 999.9;
+      pos.y = 888.8;
       // exercise
-      pos.setPixelsX(6.0);
-      pos.setPixelsY(12.0);
+      pos.setMetersX(123.4);
       // verify
-      assert(pos.x == 6000.0);
-      assert(pos.y == 12000.0);
-   }  // teardown
-   
-   void addMeters() const
+      assertEquals(pos.x, 123.4);
+      assertEquals(pos.y, 888.8);
+      assertEquals(pos.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
+
+   /*********************************************
+    * name:    GET METERS Y ZOOM
+    * input:   pos=(999.9, 888.8) y = 123.4
+    * output:  pos=(999.9, 123.4)
+    *********************************************/
+   void setMetersY()
    {  // setup
+      double metersFromPixels = Position::metersFromPixels;
+      Position::metersFromPixels = 99.9;
       Position pos;
-      pos.x = 800.0;
-      pos.y = 1600.0;
+      pos.x = 999.9;
+      pos.y = 888.8;
       // exercise
-      pos.addMetersX(-400.0);
-      pos.addMetersY(800.0);
+      pos.setMetersY(123.4);
       // verify
-      assert(pos.x == 400.0);
-      assert(pos.y == 2400.0);
-   }  // teardown
-   
-   void addPixels() const
-   {  // setup
-      Position pos;
-      pos.x = 2000.0;
-      pos.y = 4000.0;
-      // exercise
-      pos.addPixelsX(2);
-      pos.addPixelsY(3);
-      // verify
-      assert(pos.x == 4000.0);
-      assert(pos.y == 7000.0);
-   }  // teardown
+      assertEquals(pos.x, 999.9);
+      assertEquals(pos.y, 123.4);
+      assertEquals(pos.metersFromPixels, 99.9);
+      // teardown
+      Position::metersFromPixels = metersFromPixels;
+   }
 
 };
