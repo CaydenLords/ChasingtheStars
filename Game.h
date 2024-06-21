@@ -28,8 +28,8 @@ class Velocity;
 class Game {
 public: 
    // constructors
-   Game() {}
-   Game(Position upperRight) {};
+   Game();
+   Game(Position upperRight);
 
    // Game Runners
    void runPhysics();

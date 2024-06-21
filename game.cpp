@@ -12,6 +12,17 @@
 #include <cassert>
 
  /**********************************************
+  * GAME: CONSTRUCTOR
+  * Builds the start of a game
+  * INPUT
+  * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
+  *********************************************/
+Game::Game(Position upperRight) {
+
+}
+
+
+ /**********************************************
   * GAME: RUN PHYSICS 
   * Call each collidable to be moved, then check for collisions, then draw each item. 
   *********************************************/
