@@ -16,7 +16,23 @@
 class Inertia : public Collidable
 {
 public:
+   void setPosition(double x, double y);
+   Position getPosition();
+   Angle getAngle();
 
+   // Constructors
+   Inertia()
+   {
+   };
+   Inertia(Position location, Angle ang)
+   {
+      pos = location;
+      angle = ang;
+   }
+
+   Position pos;
+   Angle angle;
+   Position speed;
 
 private:
 

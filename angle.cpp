@@ -1,29 +1,24 @@
-/***********************************************************************
- * Source:
- *    Angle
- * Summary:
- *    Just call the Angle unit tests
- * Author:
- *    James Helfrich
- ************************************************************************/
-
-#include <iostream>
-#include <vector>
-#include <sstream>
-#include "angle.h"
-#include "testAngleRadians.h"
+#define TWO_PI 6.28318530718
+#define PI (TWO_PI / 2)
+#include <cmath>    // for floor()
+#include <iostream>  // for cout
+#include <cassert>   // for assert()
 using namespace std;
 
+#include "angle.h"
 
-/************************************
- * MAIN
- * Simple driver
- ***********************************/
-int main()
+// Insertion operator
+std::ostream& operator<<(std::ostream& out, const Angle& rhs)
 {
-   TestAngle().run();
-   TestAngleRadian().run();
-   std::cout << "Tests Pass\n";
-   
-   return 0;
+   rhs.display(out); // Call the display method of Angle
+   return out;
+}
+
+// Extraction operator
+std::istream& operator>>(std::istream& in, Angle& rhs)
+{
+   int newDegrees;
+   in >> newDegrees;
+   rhs.setDegrees(newDegrees);
+   return in;
 }

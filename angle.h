@@ -238,20 +238,10 @@ public:
 };
 
 // Insertion operator
-std::ostream& operator<<(std::ostream& out, const Angle& rhs) 
-{
-    rhs.display(out); // Call the display method of Angle
-    return out;
-}
+std::ostream& operator<<(std::ostream& out, const Angle& rhs);
 
 // Extraction operator
-std::istream& operator>>(std::istream& in, Angle& rhs)
-{
-    int newDegrees;
-    in >> newDegrees;
-    rhs.setDegrees(newDegrees);
-    return in;
-}
+std::istream& operator>>(std::istream& in, Angle& rhs);
 
 
 class AngleRadians : public Angle

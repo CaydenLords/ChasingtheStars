@@ -12,6 +12,7 @@
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
+#include "inertia.h"
 using namespace std;
 #define TIME_DILATION 1440.0
 #define TIME_PER_FRAME 48.0
@@ -112,3 +113,33 @@ float getVelocity(float velocity, float accel, float time)
 {
    return velocity + (accel * time);
 }
+
+/************************************************************************
+ * Set Position
+ * Sets the position of the inertia object
+ *************************************************************************/
+void Inertia::setPosition(double x, double y)
+{
+   Position myPosition(x, y);
+   pos = myPosition;
+}
+
+/************************************************************************
+ * Get Position
+ * Retruns the position of the inertia object
+ *************************************************************************/
+Position Inertia::getPosition()
+{
+   return pos;
+}
+
+/************************************************************************
+ * Get Angle
+ * Retruns the angle of the inertia object
+ *************************************************************************/
+Angle Inertia::getAngle()
+{
+   return angle;
+}
+
+

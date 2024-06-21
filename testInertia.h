@@ -29,8 +29,8 @@ public:
    }
 
 private:
-   Position test_getPosition();
+   void test_getPosition();
    void test_setPosition();
-   Angle test_getAngle();
+   void test_getAngle();
 
 };
