@@ -32,6 +32,8 @@ public:
    Position(double x, double y);
    Position(const Position & pt) : x(pt.x), y(pt.y) {}
    Position& operator = (const Position& pt);
+   static double metersFromPixels;
+
 
    // getters
    double getMetersX()       const { return x;                    }
@@ -60,7 +62,6 @@ public:
 private:
    double x;                 // horizontal position
    double y;                 // vertical position
-   static double metersFromPixels;
 };
 
 /*********************************************

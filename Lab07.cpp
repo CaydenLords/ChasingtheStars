@@ -16,6 +16,7 @@
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
+#include "game.h" // for GAME
 using namespace std;
 #define TIME_DILATION 1440.0
 #define TIME_PER_FRAME 48.0
@@ -184,97 +185,102 @@ float getVelocity(float velocity, float accel, float time)
  **************************************/
 void callBack(const Interface* pUI, void* p)
 {
-   // the first step is to cast the void pointer into a game object. This
-   // is the first step of every single callback function in OpenGL. 
-   Demo* pDemo = (Demo*)p;
+
+   Game* pGame = (Game*)p;
+
+   pGame->runPhysics();
+
+   //// the first step is to cast the void pointer into a game object. This
+   //// is the first step of every single callback function in OpenGL. 
+   //Demo* pDemo = (Demo*)p;
+
+   ////
+   //// accept input
+   ////
+
+   //// move by a little
+   //if (pUI->isUp())
+   //   pDemo->ptShip.addPixelsY(1.0);
+   //if (pUI->isDown())
+   //   pDemo->ptShip.addPixelsY(-1.0);
+   //if (pUI->isLeft())
+   //   pDemo->ptShip.addPixelsX(-1.0);
+   //if (pUI->isRight())
+   //   pDemo->ptShip.addPixelsX(1.0);
+
+
+   ////
+   //// perform all the game logic
+   ////
+
+   //// rotate the earth
+   //pDemo->angleEarth += rotateEarth();
+   //pDemo->angleShip += 0.02;
+   //pDemo->phaseStar++;
+
+   ////
+   //// draw everything
+   ////
+
+   //Position pt;
+   //ogstream gout(pt);
+
+   //// draw satellites
+   //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
+   //gout.drawHubble(pDemo->ptHubble, pDemo->angleShip);
+   //gout.drawSputnik(pDemo->ptSputnik, pDemo->angleShip);
+   //gout.drawStarlink(pDemo->ptStarlink, pDemo->angleShip);
+   //gout.drawShip(pDemo->ptShip, pDemo->angleShip, pUI->isSpace());
+   //gout.drawGPS(pDemo->ptGPS, pDemo->angleShip);
+   //gout.drawGPS(pDemo->ptOrbitStation, pDemo->angleShip);
+
+   //// draw parts
+   //pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptCrewDragon.getPixelsY() + 20);
+   //gout.drawCrewDragonRight(pt, pDemo->angleShip); // notice only two parameters are set
+   //pt.setPixelsX(pDemo->ptHubble.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptHubble.getPixelsY() + 20);
+   //gout.drawHubbleLeft(pt, pDemo->angleShip);      // notice only two parameters are set
+   //pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
+   //gout.drawGPSCenter(pt, pDemo->angleShip);       // notice only two parameters are set
+   //pt.setPixelsX(pDemo->ptStarlink.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptStarlink.getPixelsY() + 20);
+   //gout.drawStarlinkArray(pt, pDemo->angleShip);   // notice only two parameters are set
+
+   //// draw fragments
+   //pt.setPixelsX(pDemo->ptSputnik.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptSputnik.getPixelsY() + 20);
+   //gout.drawFragment(pt, pDemo->angleShip);
+   //pt.setPixelsX(pDemo->ptShip.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptShip.getPixelsY() + 20);
+   //gout.drawFragment(pt, pDemo->angleShip);
+
+   //// draw a single star
+   //gout.drawStar(pDemo->ptStar, pDemo->phaseStar);
+
+   //// draw the earth
+   //pt.setMeters(0.0, 0.0);
+   //gout.drawEarth(pt, pDemo->angleEarth);
+
+   ////get the height of the satellite above the Earth and the acceleration gravity causes
+   //float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
+   //float orbitGravityAcceleration = gravity(orbitHeight);
+
+   //// Get the angle of gravity on the ship, horizontal and vertical components
+   //float gravityAngle = gravityDirection(pDemo->ptOrbitStation);
+   //float xComp = getHorizontal(orbitGravityAcceleration, gravityAngle);
+   //float yComp = getVertical(orbitGravityAcceleration, gravityAngle);
+
+   //// Update ship's velocity
+   //pDemo->ptOrbitVelocity.setMetersX(getVelocity(pDemo->ptOrbitVelocity.getMetersX(), xComp, TIME_PER_FRAME));
+   //pDemo->ptOrbitVelocity.setMetersY(getVelocity(pDemo->ptOrbitVelocity.getMetersY(), yComp, TIME_PER_FRAME));
+
+   ////Move the Satellite
+   //pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, xComp, pDemo->ptOrbitStation.getMetersX()));
+   //pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, yComp, pDemo->ptOrbitStation.getMetersY()));
 
    //
-   // accept input
-   //
-
-   // move by a little
-   if (pUI->isUp())
-      pDemo->ptShip.addPixelsY(1.0);
-   if (pUI->isDown())
-      pDemo->ptShip.addPixelsY(-1.0);
-   if (pUI->isLeft())
-      pDemo->ptShip.addPixelsX(-1.0);
-   if (pUI->isRight())
-      pDemo->ptShip.addPixelsX(1.0);
-
-
-   //
-   // perform all the game logic
-   //
-
-   // rotate the earth
-   pDemo->angleEarth += rotateEarth();
-   pDemo->angleShip += 0.02;
-   pDemo->phaseStar++;
-
-   //
-   // draw everything
-   //
-
-   Position pt;
-   ogstream gout(pt);
-
-   // draw satellites
-   gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
-   gout.drawHubble(pDemo->ptHubble, pDemo->angleShip);
-   gout.drawSputnik(pDemo->ptSputnik, pDemo->angleShip);
-   gout.drawStarlink(pDemo->ptStarlink, pDemo->angleShip);
-   gout.drawShip(pDemo->ptShip, pDemo->angleShip, pUI->isSpace());
-   gout.drawGPS(pDemo->ptGPS, pDemo->angleShip);
-   gout.drawGPS(pDemo->ptOrbitStation, pDemo->angleShip);
-
-   // draw parts
-   pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptCrewDragon.getPixelsY() + 20);
-   gout.drawCrewDragonRight(pt, pDemo->angleShip); // notice only two parameters are set
-   pt.setPixelsX(pDemo->ptHubble.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptHubble.getPixelsY() + 20);
-   gout.drawHubbleLeft(pt, pDemo->angleShip);      // notice only two parameters are set
-   pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
-   gout.drawGPSCenter(pt, pDemo->angleShip);       // notice only two parameters are set
-   pt.setPixelsX(pDemo->ptStarlink.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptStarlink.getPixelsY() + 20);
-   gout.drawStarlinkArray(pt, pDemo->angleShip);   // notice only two parameters are set
-
-   // draw fragments
-   pt.setPixelsX(pDemo->ptSputnik.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptSputnik.getPixelsY() + 20);
-   gout.drawFragment(pt, pDemo->angleShip);
-   pt.setPixelsX(pDemo->ptShip.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptShip.getPixelsY() + 20);
-   gout.drawFragment(pt, pDemo->angleShip);
-
-   // draw a single star
-   gout.drawStar(pDemo->ptStar, pDemo->phaseStar);
-
-   // draw the earth
-   pt.setMeters(0.0, 0.0);
-   gout.drawEarth(pt, pDemo->angleEarth);
-
-   //get the height of the satellite above the Earth and the acceleration gravity causes
-   float orbitHeight = heightAboveEarth(pDemo->ptOrbitStation);
-   float orbitGravityAcceleration = gravity(orbitHeight);
-
-   // Get the angle of gravity on the ship, horizontal and vertical components
-   float gravityAngle = gravityDirection(pDemo->ptOrbitStation);
-   float xComp = getHorizontal(orbitGravityAcceleration, gravityAngle);
-   float yComp = getVertical(orbitGravityAcceleration, gravityAngle);
-
-   // Update ship's velocity
-   pDemo->ptOrbitVelocity.setMetersX(getVelocity(pDemo->ptOrbitVelocity.getMetersX(), xComp, TIME_PER_FRAME));
-   pDemo->ptOrbitVelocity.setMetersY(getVelocity(pDemo->ptOrbitVelocity.getMetersY(), yComp, TIME_PER_FRAME));
-
-   //Move the Satellite
-   pDemo->ptOrbitStation.setMetersX(getDistance(pDemo->ptOrbitVelocity.getMetersX(), TIME_PER_FRAME, xComp, pDemo->ptOrbitStation.getMetersX()));
-   pDemo->ptOrbitStation.setMetersY(getDistance(pDemo->ptOrbitVelocity.getMetersY(), TIME_PER_FRAME, yComp, pDemo->ptOrbitStation.getMetersY()));
-
-   
 
 }
 
@@ -299,14 +305,14 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsX(1000.0);
    ptUpperRight.setPixelsY(1000.0);
    Interface ui(0, NULL,
-      "Demo",   /* name on the window */
+      "Chasing the Stars",   /* name on the window */
       ptUpperRight);
 
    // Initialize the demo
-   Demo demo(ptUpperRight);
+   Game game(ptUpperRight);
 
    // set everything into action
-   ui.run(callBack, &demo);
+   ui.run(callBack, &game);
 
 
    return 0;
