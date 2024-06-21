@@ -35,7 +35,7 @@ public:
    Collidable(Position location, int rad)
    {
       pos = location;
-      rad = radius;
+      radius = rad;
    };
 
    //getter 
