@@ -43,6 +43,7 @@ public:
    {
       return pos;
    };
+   void move() {};
    //setter 
    void setPos(Position location) {};
 

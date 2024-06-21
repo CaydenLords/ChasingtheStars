@@ -14,6 +14,7 @@
 #include <iostream> 
 #include <cmath>
 #include "position.h"
+#include "collidable.h"
 
 
 class TestGame;
@@ -36,7 +37,7 @@ public:
    void moveInertia();
    void checkCollisions();
    void drawBodies();
-private: 
+protected: 
    //Star[] stars;
-   //Collidable[] collidables;
+   Collidable* collidables[1];
 };

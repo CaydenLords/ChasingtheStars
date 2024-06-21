@@ -14,6 +14,7 @@
 #include <iostream> 
 #include <cmath>
 #include "position.h"
+#include "uiDraw.h"
 
 
 class TestBody;
@@ -28,7 +29,9 @@ class Velocity;
 class Body {
 public:
    // constructors
-   Body();
+   Body() {
+      pos = Position(0, 0);
+   };
    Body(Position location) 
    {
       pos = location;
@@ -38,6 +41,9 @@ public:
    Position getPos() 
    {
       return pos;
+   };
+   void draw(ogstream* gout) 
+   {
    };
    //setter 
    void setPos(Position location) {};
