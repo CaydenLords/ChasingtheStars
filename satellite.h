@@ -29,7 +29,7 @@ public:
    }
 
    virtual void draw();
-   virtual void move();
+   void move();
    virtual void collide();
 
    Position pos;
