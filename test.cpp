@@ -10,6 +10,7 @@
 #include "test.h"
 #include "testPosition.h"
 #include "testInertia.h"
+#include "testSatellite.h"
 #include "testBody.h"
 #include "testCollidable.h"
 
@@ -23,4 +24,5 @@ void testRunner()
    TestInertia().run();
    TestBody().run();
    TestCollidable().run();
+   TestSatellite().run();
 }
