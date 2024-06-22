@@ -14,6 +14,7 @@
 #include <iostream> 
 #include <cmath>
 #include "position.h"
+#include "uiDraw.h"
 
 
 class TestBody;
@@ -25,10 +26,15 @@ class Velocity;
  * A heavenly body (from astronomy)
  *********************************************/
 
-class Body {
+class Body 
+{
 public:
+   friend TestBody;
    // constructors
-   Body();
+   Body() 
+   {
+      pos = Position(0, 0);
+   };
    Body(Position location) 
    {
       pos = location;
@@ -39,8 +45,15 @@ public:
    {
       return pos;
    };
+   void draw(ogstream* gout) 
+   {
+   };
    //setter 
-   void setPos(Position location) {};
+   void setPos(Position location) {
+      pos = location;
+   };
+
+   virtual void draw();
 
 protected:
    Position pos;

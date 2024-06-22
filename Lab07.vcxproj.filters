@@ -110,6 +110,12 @@
     <ClInclude Include="testSputnik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="testBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testCollidable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

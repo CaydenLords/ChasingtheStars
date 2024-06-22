@@ -10,6 +10,7 @@
 #include "game.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "collidable.h"
+#include "sputnik.h"
 #include <cassert>
 #include <vector>
 
@@ -20,7 +21,8 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
-
+   collidables[0] = new Collidable(Position(0,0), 1);
+   collidables[1] = new Sputnik();
 }
 
 
@@ -41,7 +43,9 @@ void Game::runPhysics()
  *********************************************/
 void Game::moveInertia()
 {
-
+   for (int i = 0; i < sizeof(collidables)-1; i++) {
+      collidables[i]->move();
+   }
 }
 
 /**********************************************
@@ -59,20 +63,7 @@ void Game::checkCollisions()
  *********************************************/
 void Game::drawBodies()
 {
-   ogstream gout;
-   gout.drawEarth(Position(0,0),0);
-
-   for (Collidable& collidable : collidables)
-   {
-      collidable.draw();
+   for (int i = 0; i < sizeof(collidables) - 1; i++) {
+      collidables[i]->draw();
    }
-}
-
-/**********************************************
- * GAME: UPDATE COLLIDABLES
- * Draw every heavenly body in Game.
- *********************************************/
-void Game::updateCollidables(Collidable collidable)
-{
-   collidables.push_back(collidable);
 }

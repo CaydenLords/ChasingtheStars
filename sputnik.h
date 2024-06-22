@@ -32,7 +32,7 @@ public:
    void move();
    void collide();
 
-   Position pos = Position(-36515095.13, 21082000.0);
+   Position pos =    Position(-36515095.13, 21082000.0);
    Angle angle;
    Position speed =  Position(2050.0, 2684.68);
 

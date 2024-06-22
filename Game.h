@@ -15,7 +15,6 @@
 #include <cmath>
 #include "position.h"
 #include "collidable.h"
-#include <vector>
 
 
 class TestGame;
@@ -38,8 +37,7 @@ public:
    void moveInertia();
    void checkCollisions();
    void drawBodies();
-   void updateCollidables(Collidable collidable);
-private: 
+protected: 
    //Star[] stars;
-   std::vector<Collidable> collidables;
+   Collidable* collidables[2];
 };

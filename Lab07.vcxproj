@@ -165,7 +165,9 @@
     <ClInclude Include="satellite.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="testCollidable.h" />
     <ClInclude Include="testInertia.h" />
+    <ClInclude Include="testBody.h" />
     <ClInclude Include="testPosition.h" />
     <ClInclude Include="testSatellite.h" />
     <ClInclude Include="testSputnik.h" />
