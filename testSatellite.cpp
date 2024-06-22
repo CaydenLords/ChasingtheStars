@@ -68,6 +68,6 @@ void TestSatellite::test_getAngle()
    Angle myAngle = inertia.getAngle();
 
    // VERIFY
-   assertUnit(myAngle.getRadians() == 100);
+   assertUnit(myAngle.getDegrees() == 100);
    // TEARDOWN
 }
