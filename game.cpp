@@ -42,8 +42,9 @@ void Game::runPhysics()
  *********************************************/
 void Game::moveInertia()
 {
-   for (int i = 0; i < collidables.size(); i++) {
-      collidables[0]->move();
+   for (int i = 0; i < collidables.size(); i++) 
+   {
+      collidables[i]->move();
    }
 }
 
@@ -62,7 +63,8 @@ void Game::checkCollisions()
  *********************************************/
 void Game::drawBodies()
 {
-   for (int i = 0; i < collidables.size(); i++) {
+   for (int i = 0; i < collidables.size(); i++) 
+   {
       collidables[i]->draw();
    }
    ogstream gout;
