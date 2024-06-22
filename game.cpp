@@ -21,8 +21,7 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
-   collidables[0] = new Collidable(Position(0,0), 1);
-   collidables[1] = new Sputnik();
+   collidables.push_back(new Sputnik());
 }
 
 
@@ -43,8 +42,8 @@ void Game::runPhysics()
  *********************************************/
 void Game::moveInertia()
 {
-   for (int i = 0; i < sizeof(collidables)-1; i++) {
-      collidables[i]->move();
+   for (int i = 0; i < collidables.size(); i++) {
+      collidables[0]->move();
    }
 }
 
@@ -63,7 +62,7 @@ void Game::checkCollisions()
  *********************************************/
 void Game::drawBodies()
 {
-   for (int i = 0; i < sizeof(collidables) - 1; i++) {
+   for (int i = 0; i < collidables.size(); i++) {
       collidables[i]->draw();
    }
 }

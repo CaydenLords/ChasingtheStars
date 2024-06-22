@@ -31,7 +31,7 @@ public:
    }
 
    virtual void draw();
-   void move();
+   virtual void move();
    virtual void collide();
 
 

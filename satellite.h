@@ -28,9 +28,9 @@ public:
       angle = ang;
    }
 
-   void draw();
-   void move();
-   void collide();
+   virtual void draw();
+   virtual void move();
+   virtual void collide();
 
    Position pos;
    Angle angle;

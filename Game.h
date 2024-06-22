@@ -10,7 +10,7 @@
 
 
 #pragma once
-
+#include <vector>
 #include <iostream> 
 #include <cmath>
 #include "position.h"
@@ -39,5 +39,5 @@ public:
    void drawBodies();
 protected: 
    //Star[] stars;
-   Collidable* collidables[2];
+   vector<Collidable*> collidables;
 };
