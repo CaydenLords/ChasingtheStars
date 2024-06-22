@@ -30,20 +30,13 @@ public:
    Satellite(Position location, Angle ang, int rad, Position move): Inertia(location, ang, rad, move){
       pos = location;
       angle = ang;
-      rad = radius;
+      radius = rad;
       speed = move;
    }
 
    virtual void draw();
-   void move();
+   //void move();
    virtual void collide();
-
-   Position pos;
-   Angle angle;
-   Position speed;
-
-private:
-
 
 
 };

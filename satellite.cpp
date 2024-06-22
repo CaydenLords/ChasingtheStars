@@ -49,10 +49,10 @@ void Satellite::draw() {};
  * Move
  * Moves the Satellite object
  *************************************************************************/
-void Satellite::move()
-{
-   Inertia::move();
-};
+//void Satellite::move()
+//{
+//   Inertia::move();
+//};
 
 /************************************************************************
  * Collide

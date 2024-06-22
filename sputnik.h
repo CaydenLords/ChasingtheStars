@@ -29,20 +29,12 @@ public:
    {
       pos = location;
       angle = ang;
-      rad = radius;
+      radius = rad;
       speed = move;
    }
 
    void draw();
-   void move();
+   //void move();
    void collide();
-
-
-
-private:
-   Position pos;
-   Angle angle;
-   Position speed;
-
 
 };

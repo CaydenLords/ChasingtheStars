@@ -65,4 +65,6 @@ void Game::drawBodies()
    for (int i = 0; i < collidables.size(); i++) {
       collidables[i]->draw();
    }
+   ogstream gout;
+   gout.drawEarth(Position(0, 0), 0);
 }

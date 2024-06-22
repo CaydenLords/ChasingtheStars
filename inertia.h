@@ -32,7 +32,7 @@ public:
    Inertia(Position location, Angle ang, int rad, Position move){
       pos = location;
       angle = ang;
-      rad = radius;
+      radius = rad;
       speed = move;
    }
 

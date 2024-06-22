@@ -54,10 +54,10 @@ void Sputnik::draw()
  * Move
  * Moves the Sputnik object
  *************************************************************************/
-void Sputnik::move()
-{
-   Inertia::move();
-};
+//void Sputnik::move()
+//{
+//   Inertia::move();
+//};
 
 /************************************************************************
  * Collide
