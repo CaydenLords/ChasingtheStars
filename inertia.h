@@ -29,6 +29,12 @@ public:
       pos = location;
       angle = ang;
    }
+   Inertia(Position location, Angle ang, int rad, Position move){
+      pos = location;
+      angle = ang;
+      rad = radius;
+      speed = move;
+   }
 
    virtual void draw();
    void move();

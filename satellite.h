@@ -19,13 +19,19 @@ public:
    Angle getAngle();
 
    // Constructors
-   Satellite()
+   Satellite(): Inertia()
    {
    };
    Satellite(Position location, Angle ang)
    {
       pos = location;
       angle = ang;
+   }
+   Satellite(Position location, Angle ang, int rad, Position move): Inertia(location, ang, rad, move){
+      pos = location;
+      angle = ang;
+      rad = radius;
+      speed = move;
    }
 
    virtual void draw();

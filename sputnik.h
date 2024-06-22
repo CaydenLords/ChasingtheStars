@@ -19,17 +19,18 @@ public:
    Angle getAngle();
 
    // Constructors
-   Sputnik()
+   Sputnik(): Satellite()
    {
       pos = Position(-36515095.13, 21082000.0);
       angle = Angle(0);
       speed = Position(2050.0, 2684.68);
    };
-   Sputnik(Position location, Angle ang, int rad)
+   Sputnik(Position location, Angle ang, int rad, Position move): Satellite(location, ang, rad, move)
    {
       pos = location;
       angle = ang;
       rad = radius;
+      speed = move;
    }
 
    void draw();
