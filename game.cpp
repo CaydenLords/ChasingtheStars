@@ -9,7 +9,9 @@
 
 #include "game.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
+#include "collidable.h"
 #include <cassert>
+#include <vector>
 
  /**********************************************
   * GAME: CONSTRUCTOR
@@ -59,4 +61,18 @@ void Game::drawBodies()
 {
    ogstream gout;
    gout.drawEarth(Position(0,0),0);
+
+   for (Collidable& collidable : collidables)
+   {
+      collidable.draw();
+   }
+}
+
+/**********************************************
+ * GAME: UPDATE COLLIDABLES
+ * Draw every heavenly body in Game.
+ *********************************************/
+void Game::updateCollidables(Collidable collidable)
+{
+   collidables.push_back(collidable);
 }

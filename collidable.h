@@ -45,6 +45,10 @@ public:
       radius = 0;
    }
 
+   virtual void draw();
+   void move();
+   virtual void collide();
+
    //getter 
    Position getPos()
    {
