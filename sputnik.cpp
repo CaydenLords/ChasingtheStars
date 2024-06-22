@@ -12,33 +12,33 @@
 #include "sputnik.h"
 #include "uiDraw.h"
 
- /************************************************************************
-  * Set Position
-  * Sets the position of the Sputnik satellite
-  *************************************************************************/
-void Sputnik::setPosition(double x, double y)
-{
-   Position myPosition(x, y);
-   pos = myPosition;
-}
-
-/************************************************************************
- * Get Position
- * Retruns the position of the Sputnik satellite
- *************************************************************************/
-Position Sputnik::getPosition()
-{
-   return pos;
-}
-
-/************************************************************************
- * Get Angle
- * Retruns the angle of the Sputnik satellite
- *************************************************************************/
-Angle Sputnik::getAngle()
-{
-   return angle;
-}
+// /************************************************************************
+//  * Set Position
+//  * Sets the position of the Sputnik satellite
+//  *************************************************************************/
+//void Sputnik::setPosition(double x, double y)
+//{
+//   Position myPosition(x, y);
+//   pos = myPosition;
+//}
+//
+///************************************************************************
+// * Get Position
+// * Retruns the position of the Sputnik satellite
+// *************************************************************************/
+//Position Sputnik::getPosition()
+//{
+//   return pos;
+//}
+//
+///************************************************************************
+// * Get Angle
+// * Retruns the angle of the Sputnik satellite
+// *************************************************************************/
+//Angle Sputnik::getAngle()
+//{
+//   return angle;
+//}
 
 /************************************************************************
  * Draw

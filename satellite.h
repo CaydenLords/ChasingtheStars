@@ -14,9 +14,6 @@
 class Satellite : public Inertia
 {
 public:
-   void setPosition(double x, double y);
-   Position getPosition();
-   Angle getAngle();
 
    // Constructors
    Satellite(): Inertia()

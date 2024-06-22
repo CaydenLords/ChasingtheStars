@@ -14,9 +14,6 @@
 class Sputnik : public Satellite
 {
 public:
-   void setPosition(double x, double y);
-   Position getPosition();
-   Angle getAngle();
 
    // Constructors
    Sputnik(): Satellite()
