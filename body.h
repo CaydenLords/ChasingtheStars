@@ -45,7 +45,7 @@ public:
    {
       return pos;
    };
-   void draw(ogstream* gout) 
+   virtual void draw(ogstream* gout) 
    {
    };
    //setter 

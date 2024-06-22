@@ -49,8 +49,8 @@ public:
       radius = 0;
    }
 
-   //virtual void draw();
-   //void move();
+   virtual void draw() {};
+   virtual void move() {};
    //virtual void collide();
 
    //getter 
@@ -58,7 +58,6 @@ public:
    {
       return pos;
    };
-   void move() {};
    //setter 
    void setPos(Position location) {
       pos = location;

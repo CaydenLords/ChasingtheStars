@@ -22,10 +22,11 @@ public:
    Sputnik()
    {
    };
-   Sputnik(Position location, Angle ang)
+   Sputnik(Position location, Angle ang, int rad)
    {
       pos = location;
       angle = ang;
+      rad = radius;
    }
 
    void draw();
