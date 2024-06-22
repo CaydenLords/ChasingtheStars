@@ -28,6 +28,7 @@ class Velocity;
 
 class Body {
 public:
+   friend TestBody;
    // constructors
    Body() {
       pos = Position(0, 0);
