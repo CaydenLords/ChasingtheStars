@@ -21,7 +21,7 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
-   collidables.push_back(new Sputnik());
+   collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 0, Position(2050.0, 2684.68)));
 }
 
 
@@ -67,4 +67,6 @@ void Game::drawBodies()
    {
       collidables[i]->draw();
    }
+   ogstream gout;
+   gout.drawEarth(Position(0, 0), 0);
 }
