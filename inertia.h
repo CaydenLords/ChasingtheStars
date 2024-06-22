@@ -30,6 +30,11 @@ public:
       angle = ang;
    }
 
+   virtual void draw();
+   void move();
+   virtual void collide();
+
+
    Position pos;
    Angle angle;
    Position speed;

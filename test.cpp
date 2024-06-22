@@ -11,6 +11,7 @@
 #include "testPosition.h"
 #include "testInertia.h"
 #include "testSatellite.h"
+#include "testSputnik.h"
 #include "testBody.h"
 #include "testCollidable.h"
 
@@ -25,4 +26,5 @@ void testRunner()
    TestBody().run();
    TestCollidable().run();
    TestSatellite().run();
+   TestSputnik().run();
 }

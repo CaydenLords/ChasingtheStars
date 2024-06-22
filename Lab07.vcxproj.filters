@@ -57,6 +57,9 @@
     <ClCompile Include="testSatellite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testSputnik.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testSatellite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testSputnik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testBody.h">

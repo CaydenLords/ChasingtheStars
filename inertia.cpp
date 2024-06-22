@@ -142,4 +142,38 @@ Angle Inertia::getAngle()
    return angle;
 }
 
+/************************************************************************
+ * Draw
+ * Allows the inertia object to be drawn
+ *************************************************************************/
+void Inertia::draw() {};
 
+/************************************************************************
+ * Move
+ * Moves the inertia object
+ *************************************************************************/
+void Inertia::move() 
+{
+   //get the height of the satellite above the Earth and the acceleration gravity causes
+   float orbitHeight = heightAboveEarth(pos);
+   float orbitGravityAcceleration = gravity(orbitHeight);
+
+   // Get the angle of gravity on the ship, horizontal and vertical components
+   float gravityAngle = gravityDirection(pos);
+   float xComp = getHorizontal(orbitGravityAcceleration, gravityAngle);
+   float yComp = getVertical(orbitGravityAcceleration, gravityAngle);
+
+   // Update ship's velocity
+   speed.setMetersX(getVelocity(speed.getMetersX(), xComp, TIME_PER_FRAME));
+   speed.setMetersY(getVelocity(speed.getMetersY(), yComp, TIME_PER_FRAME));
+
+   // Move the Satellite
+   pos.setMetersX(getDistance(speed.getMetersX(), TIME_PER_FRAME, xComp, pos.getMetersX()));
+   pos.setMetersY(getDistance(speed.getMetersY(), TIME_PER_FRAME, yComp, pos.getMetersY()));
+};
+
+/************************************************************************
+ * Collide
+ * Checks if the inertia object has collided with another object
+ *************************************************************************/
+void Inertia::collide() {};

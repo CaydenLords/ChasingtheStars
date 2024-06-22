@@ -1,7 +1,7 @@
 #pragma once
 /***********************************************************************
  * Header File:
- *    Inertia: Class which runs all of the physics for the simulator
+ *    Satellite: Class which houses all the functionality of a satellite
  * Author:
  *    Ryan Donaldson
  * Summary:
@@ -9,8 +9,6 @@
  ************************************************************************/
 
 #include <iostream> 
-#include <cmath>
-#include "body.h"
 #include "inertia.h"
 
 class Satellite : public Inertia
@@ -29,6 +27,10 @@ public:
       pos = location;
       angle = ang;
    }
+
+   void draw();
+   void move();
+   void collide();
 
    Position pos;
    Angle angle;
