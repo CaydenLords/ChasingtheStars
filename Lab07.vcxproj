@@ -139,27 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="angle.cpp" />
     <ClCompile Include="body.cpp" />
     <ClCompile Include="collidable.cpp" />
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="intertia.cpp" />
+    <ClCompile Include="inertia.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="satellite.cpp" />
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="testInertia.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="angle.h" />
     <ClInclude Include="body.h" />
     <ClInclude Include="collidable.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="intertia.h" />
+    <ClInclude Include="inertia.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="satellite.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="testInertia.h" />
     <ClInclude Include="testBody.h" />
     <ClInclude Include="testPosition.h" />
     <ClInclude Include="uiDraw.h" />

@@ -23,17 +23,17 @@ using namespace std;
 #define TWO_PI 6.28318530718
 
 
-double Position::metersFromPixels = 40.0;
+//double Position::metersFromPixels = 40.0;
 
 /************************************************************************
  * Rotate Earth
  * Calculates the radians the Earth is rotating
  *  OUTPUT rotation  The radians the Earth is rotating 
  *************************************************************************/
-float rotateEarth() 
-{
-   return (TWO_PI / -30.0) * (TIME_DILATION / 86400.0);
-}
+//float rotateEarth() 
+//{
+   //return (TWO_PI / -30.0) * (TIME_DILATION / 86400.0);
+//}
 
 /************************************************************************
  * Gravity
@@ -41,10 +41,10 @@ float rotateEarth()
  *  INPUT  height    The height above the Earth in meters
  *  OUTPUT gravity   The gravity's effect in acceleration
  *************************************************************************/
-float gravity(float height)
-{
-   return 9.80665 * ((6378000.0/(6378000.0 + height) * (6378000.0 / (6378000.0 + height))));
-}
+//float gravity(float height)
+//{
+   //return 9.80665 * ((6378000.0/(6378000.0 + height) * (6378000.0 / (6378000.0 + height))));
+//}
 
 /************************************************************************
  * Height Above Earth
@@ -52,10 +52,10 @@ float gravity(float height)
  *  INPUT  place    The x and y coordinates of the object, where the Earth is (0,0)
  *  OUTPUT height   How high the object is above the Earth
  *************************************************************************/
-float heightAboveEarth(Position place) 
-{
-   return sqrt(place.getMetersX() * place.getMetersX() + place.getMetersY() * place.getMetersY()) - 6378000.0;
-}
+//float heightAboveEarth(Position place) 
+//{
+   //return sqrt(place.getMetersX() * place.getMetersX() + place.getMetersY() * place.getMetersY()) - 6378000.0;
+//}
 
 /************************************************************************
  * Direction of Gravity
@@ -63,10 +63,10 @@ float heightAboveEarth(Position place)
  *  INPUT  place       The x and y coordinates of the object, where the Earth is (0,0)
  *  OUTPUT direction   What direction gravity is pulling in radians 
  *************************************************************************/
-float gravityDirection (Position place) 
-{
-   return atan2(0.0-place.getMetersX(), 0.0-place.getMetersY());
-}
+//float gravityDirection (Position place) 
+//{
+//   return atan2(0.0-place.getMetersX(), 0.0-place.getMetersY());
+//}
 
 /************************************************************************
  * Get Horizontal 
@@ -75,10 +75,10 @@ float gravityDirection (Position place)
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT xAccel   The horizontal component of the acceleration
  *************************************************************************/
-float getHorizontal(float accel, float angle) 
-{
-   return accel * sin(angle);
-}
+//float getHorizontal(float accel, float angle) 
+//{
+//   return accel * sin(angle);
+//}
 
 /************************************************************************
  * Get Vertical
@@ -87,10 +87,10 @@ float getHorizontal(float accel, float angle)
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT yAccel   The vertical component of the acceleration
  *************************************************************************/
-float getVertical(float accel, float angle) 
-{
-   return accel * cos(angle);
-}
+//float getVertical(float accel, float angle) 
+//{
+//   return accel * cos(angle);
+//}
 
 /************************************************************************
  * Get Distance
@@ -101,10 +101,10 @@ float getVertical(float accel, float angle)
  * INPUT  pos        The location of the object (either x or y) 
  * OUTPUT newPos     Where the object is now
  *************************************************************************/
-float getDistance(float velocity, float time, float accel, float pos) 
-{
-   return pos + (velocity * time) + (0.5 * accel * time * time);
-}
+//float getDistance(float velocity, float time, float accel, float pos) 
+//{
+//   return pos + (velocity * time) + (0.5 * accel * time * time);
+//}
 
 /************************************************************************
  * Get Velocity
@@ -114,10 +114,10 @@ float getDistance(float velocity, float time, float accel, float pos)
  * INPUT  time       How much time has passed
  * OUTPUT newVel     How fast the object is now moving
  *************************************************************************/
-float getVelocity(float velocity, float accel, float time)
-{
-   return velocity + (accel * time);
-}
+//float getVelocity(float velocity, float accel, float time)
+//{
+//   return velocity + (accel * time);
+//}
 
 /*************************************
  * All the interesting work happens here, when

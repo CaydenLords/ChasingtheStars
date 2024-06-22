@@ -39,13 +39,19 @@
     <ClCompile Include="collidable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="intertia.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="satellite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sputnik.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inertia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testInertia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,13 +83,19 @@
     <ClInclude Include="collidable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="intertia.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="satellite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sputnik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inertia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testInertia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="angle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
