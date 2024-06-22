@@ -26,11 +26,13 @@ class Velocity;
  * A heavenly body (from astronomy)
  *********************************************/
 
-class Body {
+class Body 
+{
 public:
    friend TestBody;
    // constructors
-   Body() {
+   Body() 
+   {
       pos = Position(0, 0);
    };
    Body(Position location) 
@@ -47,7 +49,9 @@ public:
    {
    };
    //setter 
-   void setPos(Position location) {};
+   void setPos(Position location) {
+      pos = location;
+   };
 
 protected:
    Position pos;

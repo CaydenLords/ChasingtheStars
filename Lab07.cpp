@@ -17,6 +17,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "game.h" // for GAME
+#include "test.h" // for TESTS
 using namespace std;
 #define TIME_DILATION 1440.0
 #define TIME_PER_FRAME 48.0
@@ -250,10 +251,9 @@ int main(int argc, char** argv)
    Interface ui(0, NULL,
       "Chasing the Stars",   /* name on the window */
       ptUpperRight);
-
+   testRunner();
    // Initialize the demo
    Game game(ptUpperRight);
-
    // set everything into action
    ui.run(callBack, &game);
 

@@ -1,12 +1,11 @@
-#pragma once
 
 /***********************************************************************
  * Header File:
- *    Test Body : Test the Body class
+ *    Test Collidable : Test the Collidable class
  * Author:
  *    Cayden Lords
  * Summary:
- *    All the unit tests for Body
+ *    All the unit tests for Collidable
  ************************************************************************/
 
 
@@ -14,13 +13,14 @@
 
 #include "position.h"
 #include "body.h"
+#include "collidable.h"
 #include "unitTest.h"
 
  /*******************************
-  * TEST Body
-  * A friend class for Body which contains the Body unit tests
+  * TEST Collidable
+  * A friend class for Collidable which contains the Collidable unit tests
   ********************************/
-class TestBody : public UnitTest
+class TestCollidable : public UnitTest
 {
 public:
    void run()
@@ -35,100 +35,99 @@ public:
       setPositionZero();
       setPositionNegative();
       setPositionFortyTwo();
-      report("Body");
-
+      report("Collidable");
    }
 private:
    void defaultConstructor() {
       // setup
       // exercise
-      Body body = Body();
+      Collidable collidable;
       // verify
-      assertUnit(body.pos == Position(0, 0));
+      assertUnit(collidable.pos == Position(0, 0));
       // teardown
    }
    void constructorZero()
    {
       // setup
       // exercise
-      Body body(Position(0,0));
+      Collidable collidable(Position(0, 0), 0);
       // verify
-      assertUnit(body.pos == Position(0, 0));
+      assertUnit(collidable.pos == Position(0, 0));
       // teardown
    }
    void constructorNegative()
    {
       // setup
       // exercise
-      Body body(Position(-100, -100));
+      Collidable collidable(Position(-100, -100), 0);
       // verify
-      assertUnit(body.pos == Position(-100, -100));
+      assertUnit(collidable.pos == Position(-100, -100));
       // teardown
    }
    void constructorFortyTwo()
    {
       // setup
       // exercise
-      Body body(Position(42, 42));
+      Collidable collidable(Position(42, 42), 0);
       // verify
-      assertUnit(body.pos == Position(42, 42));
+      assertUnit(collidable.pos == Position(42, 42));
       // teardown
    }
-   void getPositionZero(){
+   void getPositionZero() {
       // setup
-      Body body;
-      body.pos = Position(0,0);
+      Collidable collidable;
+      collidable.pos = Position(0, 0);
       // exercise
-      Position pos = body.getPos();
+      Position pos = collidable.getPos();
       // verify
       assertUnit(pos == Position(0, 0));
       // teardown
    }
    void getPositionNegative() {
       // setup
-      Body body;
-      body.pos = Position(-100, -100);
+      Collidable collidable;
+      collidable.pos = Position(-100, -100);
       // exercise
-      Position pos = body.getPos();
+      Position pos = collidable.getPos();
       // verify
       assertUnit(pos == Position(-100, -100));
       // teardown
    }
    void getPositionFortyTwo() {
       // setup
-      Body body;
-      body.pos = Position(42, 42);
+      Collidable collidable;
+      collidable.pos = Position(42, 42);
       // exercise
-      Position pos = body.getPos();
+      Position pos = collidable.getPos();
       // verify
       assertUnit(pos == Position(42, 42));
       // teardown
    }
    void setPositionZero() {
       // setup
-      Body body;
+      Collidable collidable;
       // exercise
-      body.setPos(Position(0, 0));
+      collidable.setPos(Position(0, 0));
       // verify
-      assertUnit(body.pos == Position(0, 0));
+      assertUnit(collidable.pos == Position(0, 0));
       // teardown
    }
    void setPositionNegative() {
       // setup
-      Body body;
+      Collidable collidable;
       // exercise
-      body.setPos(Position(-100, -100));
+      collidable.setPos(Position(-100, -100));
       // verify
-      assertUnit(body.pos == Position(-100, -100));
+      assertUnit(collidable.pos == Position(-100, -100));
       // teardown
    }
    void setPositionFortyTwo() {
       // setup
-      Body body;
+      Collidable collidable;
       // exercise
-      body.setPos(Position(42, 42));
+      collidable.setPos(Position(42, 42));
       // verify
-      assertUnit(body.pos == Position(42, 42));
+      assertUnit(collidable.pos == Position(42, 42));
       // teardown
    }
 };

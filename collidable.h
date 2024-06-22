@@ -8,7 +8,6 @@
  *    This contains the collision calculations of any object in our space simulations. 
  ************************************************************************/
 
-
 #pragma once
 
 #include <iostream> 
@@ -16,7 +15,6 @@
 #include "position.h"
 #include "body.h"
 #include "angle.h"
-
 
 class TestCollidable;
 class Acceleration;
@@ -31,11 +29,17 @@ class Velocity;
 class Collidable : public Body
 {
 public:
+   friend TestCollidable;
    // constructors
-   Collidable();
+   Collidable() {
+      pos = Position(0, 0);
+      angle = 0;
+      radius = 0;
+   };
    Collidable(Position location, int rad)
    {
       pos = location;
+      angle = Angle(0);
       radius = rad;
    };
    Collidable(Position location, Angle myAngle)
@@ -52,7 +56,9 @@ public:
    };
    void move() {};
    //setter 
-   void setPos(Position location) {};
+   void setPos(Position location) {
+      pos = location;
+   };
 
 protected:
    Position pos;
