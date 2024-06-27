@@ -35,13 +35,13 @@ public:
       pos = Position(0, 0);
       angle = 0;
       radius = 0;
-   };
+   }
    Collidable(Position location, int rad)
    {
       pos = location;
       angle = Angle(0);
       radius = rad;
-   };
+   }
    Collidable(Position location, Angle myAngle)
    {
       pos = location;
@@ -57,11 +57,11 @@ public:
    Position getPos()
    {
       return pos;
-   };
+   }
    //setter 
    void setPos(Position location) {
       pos = location;
-   };
+   }
 
 protected:
    Position pos;

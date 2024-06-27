@@ -71,3 +71,4 @@ void TestSputnik::test_getAngle()
    assertUnit(myAngle.getDegrees() == 100);
    // TEARDOWN
 }
+

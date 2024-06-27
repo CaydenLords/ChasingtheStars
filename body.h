@@ -34,24 +34,24 @@ public:
    Body() 
    {
       pos = Position(0, 0);
-   };
+   }
    Body(Position location) 
    {
       pos = location;
-   };
+   }
 
    //getter 
    Position getPos() 
    {
       return pos;
-   };
+   }
    virtual void draw(ogstream* gout) 
    {
-   };
+   }
    //setter 
    void setPos(Position location) {
       pos = location;
-   };
+   }
 
    virtual void draw();
 

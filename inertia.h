@@ -23,7 +23,7 @@ public:
    // Constructors
    Inertia()
    {
-   };
+   }
    Inertia(Position location, Angle ang)
    {
       pos = location;
@@ -37,8 +37,8 @@ public:
    }
 
    virtual void draw();
-   void move();
-   virtual void collide();
+     void move();
+     virtual void collide();
 
 
    Position pos;

@@ -18,7 +18,7 @@ public:
    // Constructors
    Satellite(): Inertia()
    {
-   };
+   }
    Satellite(Position location, Angle ang)
    {
       pos = location;

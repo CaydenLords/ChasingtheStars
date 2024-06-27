@@ -9,4 +9,4 @@
 
 #pragma once
 
-void testRunner();
+void testRunner()
