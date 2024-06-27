@@ -2,7 +2,7 @@
  * Source File:
  *    Angle : The representation of a direction for an object
  * Author:
- *    Br. Helfrich
+ *    Ryan Donaldson
  * Summary:
  *    Everything we need to know the angle (or direction) of a object
  ************************************************************************/
