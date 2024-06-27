@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Source File:
+ *    Angle : The representation of a direction for an object
+ * Author:
+ *    Br. Helfrich
+ * Summary:
+ *    Everything we need to know the angle (or direction) of a object
+ ************************************************************************/
+
+
 #define TWO_PI 6.28318530718
 #define PI (TWO_PI / 2)
 #include <cmath>    // for floor()
