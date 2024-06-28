@@ -1,10 +1,10 @@
 /***********************************************************************
  * Header File:
- *    Test Sputnik : Test the Sputnik class
+ *    Test Dragon : Test the Dragon class
  * Author:
  *    Ryan Donaldson
  * Summary:
- *    All the unit tests for Sputnik
+ *    All the unit tests for Dragon
  ************************************************************************/
 
 
@@ -15,10 +15,10 @@
 #include "unitTest.h"
 
  /***************************************************
-  * SPUTNIK TEST
-  * Test the SPUTNIK class
+  * DRAGON TEST
+  * Test the DRAGON class
   ***************************************************/
-class TestSputnik : public UnitTest
+class TestDragon : public UnitTest
 {
 public:
    void run()
@@ -26,7 +26,7 @@ public:
       test_getPosition();
       test_setPosition();
       test_getAngle();
-      report("Sputnik");
+      report("Hubble");
    }
 
 private:

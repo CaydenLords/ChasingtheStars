@@ -73,11 +73,11 @@ void TestInertia::test_getAngle()
 }
 
 /*************************************
-  * TEST MOVE : Inertia
+  * TEST MOVE 1 : Inertia
   * Input: (-36515095.13, 21082000.0)
   * Output: (-36514424.0,  21081612.0)
   **************************************/
-void TestInertia::test_move()
+void TestInertia::test_move1()
 {
    // SETUP
    Inertia satellite;
@@ -95,127 +95,43 @@ void TestInertia::test_move()
 }
 
 /*************************************
-  * TEST GRAVITY : Inertia
-  * Input:
-  * Output:
+  * TEST MOVE 2 : Inertia
+  * Input: (10000000.0, 10000000.0)
+  * Output: (9995125.0,  9995125.0)
   **************************************/
-void TestInertia::test_gravity()
+void TestInertia::test_move2()
 {
    // SETUP
-
+   Inertia satellite;
+   satellite.setPosition(10000000.0, 10000000.0);
 
    // EXERCISE
+   satellite.move(false, false, false);
 
-
+   Position posNew = satellite.getPosition();
    // VERIFY
-
+   assertUnit(posNew.getMetersX() == 9995125.0);
+   assertUnit(posNew.getMetersY() == 9995125.0);
    // TEARDOWN
 }
 
 /*************************************
-  * TEST HEIGHT ABOVE EARTH : Inertia
-  * Input:
-  * Output:
+  * TEST MOVE 0 : Inertia
+  * Input: (0.0, 0.0)
+  * Output: (0.0,  8472.9)
   **************************************/
-void TestInertia::test_heightAboveEarth()
+void TestInertia::test_move0()
 {
    // SETUP
-
-
+   Inertia satellite;
+   satellite.setPosition(0.0, 0.0);
+   
    // EXERCISE
-
-
+   satellite.move(false, false, false);
+   
+   Position posNew = satellite.getPosition();
    // VERIFY
-
-   // TEARDOWN
-}
-
-/*************************************
-  * TEST GRAVITY DIRECTION : Inertia
-  * Input:
-  * Output:
-  **************************************/
-void TestInertia::test_gravityDirection()
-{
-   // SETUP
-
-
-   // EXERCISE
-
-
-   // VERIFY
-
-   // TEARDOWN
-}
-
-/*************************************
-  * TEST GET HORIZONTAL : Inertia
-  * Input:
-  * Output:
-  **************************************/
-void TestInertia::test_getHorizontal()
-{
-   // SETUP
-
-
-   // EXERCISE
-
-
-   // VERIFY
-
-   // TEARDOWN
-}
-
-/*************************************
-  * TEST GET VERTICAL : Inertia
-  * Input:
-  * Output:
-  **************************************/
-void TestInertia::test_getVertical()
-{
-   // SETUP
-
-
-   // EXERCISE
-
-
-   // VERIFY
-
-   // TEARDOWN
-}
-
-/*************************************
-  * TEST GET DIRECTION : Inertia
-  * Input:
-  * Output:
-  **************************************/
-void TestInertia::test_getDirection()
-{
-   // SETUP
-
-
-   // EXERCISE
-
-
-   // VERIFY
-
-   // TEARDOWN
-}
-
-/*************************************
-  * TEST GET VELOCITY : Inertia
-  * Input:
-  * Output:
-  **************************************/
-void TestInertia::test_getVelocity()
-{
-   // SETUP
-
-
-   // EXERCISE
-
-
-   // VERIFY
-
+   assertUnit(posNew.getMetersX() == 0.0);
+   assertUnit(round(posNew.getMetersY()) == 8473.0);
    // TEARDOWN
 }

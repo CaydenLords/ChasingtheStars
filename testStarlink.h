@@ -1,10 +1,10 @@
 /***********************************************************************
  * Header File:
- *    Test Sputnik : Test the Sputnik class
+ *    Test Starlink : Test the Starlink class
  * Author:
  *    Ryan Donaldson
  * Summary:
- *    All the unit tests for Sputnik
+ *    All the unit tests for Starlink
  ************************************************************************/
 
 
@@ -15,10 +15,10 @@
 #include "unitTest.h"
 
  /***************************************************
-  * SPUTNIK TEST
-  * Test the SPUTNIK class
+  * STARLINK TEST
+  * Test the Starlink class
   ***************************************************/
-class TestSputnik : public UnitTest
+class TestStarlink : public UnitTest
 {
 public:
    void run()
@@ -26,7 +26,7 @@ public:
       test_getPosition();
       test_setPosition();
       test_getAngle();
-      report("Sputnik");
+      report("Hubble");
    }
 
 private:

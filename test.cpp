@@ -14,6 +14,10 @@
 #include "testSputnik.h"
 #include "testBody.h"
 #include "testCollidable.h"
+#include "testGPS.h"
+#include "testHubble.h"
+#include "testDragon.h"
+#include "testStarlink.h"
 
 /*****************************************************************
  * TEST RUNNER
@@ -27,4 +31,8 @@ void testRunner()
    TestCollidable().run();
    TestSatellite().run();
    TestSputnik().run();
+   TestGPS().run();
+   TestHubble().run();
+   TestDragon().run();
+   TestStarlink().run();
 }
