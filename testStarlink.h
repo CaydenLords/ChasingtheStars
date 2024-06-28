@@ -26,7 +26,7 @@ public:
       test_getPosition();
       test_setPosition();
       test_getAngle();
-      report("Hubble");
+      report("Starlink");
    }
 
 private:
