@@ -36,7 +36,7 @@ float rotateEarth()
  *  INPUT  height    The height above the Earth in meters
  *  OUTPUT gravity   The gravity's effect in acceleration
  *************************************************************************/
-float gravity(float height)
+float Inertia::gravity(float height)
 {
    return 9.80665 * ((6378000.0 / (6378000.0 + height) * (6378000.0 / (6378000.0 + height))));
 }
@@ -47,9 +47,9 @@ float gravity(float height)
  *  INPUT  place    The x and y coordinates of the object, where the Earth is (0,0)
  *  OUTPUT height   How high the object is above the Earth
  *************************************************************************/
-float heightAboveEarth(Position place)
+float Inertia::heightAboveEarth(Position place)
 {
-   return sqrt(place.getMetersX() * place.getMetersX() + place.getMetersY() * place.getMetersY()) - 6378000.0;
+   return abs(sqrt(place.getMetersX() * place.getMetersX() + place.getMetersY() * place.getMetersY()) - 6378000.0);
 }
 
 /************************************************************************
@@ -58,7 +58,7 @@ float heightAboveEarth(Position place)
  *  INPUT  place       The x and y coordinates of the object, where the Earth is (0,0)
  *  OUTPUT direction   What direction gravity is pulling in radians
  *************************************************************************/
-float gravityDirection(Position place)
+float Inertia::gravityDirection(Position place)
 {
    return atan2(0.0 - place.getMetersX(), 0.0 - place.getMetersY());
 }
@@ -70,7 +70,7 @@ float gravityDirection(Position place)
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT xAccel   The horizontal component of the acceleration
  *************************************************************************/
-float getHorizontal(float accel, float angle)
+float Inertia::getHorizontal(float accel, float angle)
 {
    return accel * sin(angle);
 }
@@ -82,7 +82,7 @@ float getHorizontal(float accel, float angle)
  *  INPUT  angle    The direction the gravity is pulling in radians
  *  OUTPUT yAccel   The vertical component of the acceleration
  *************************************************************************/
-float getVertical(float accel, float angle)
+float Inertia::getVertical(float accel, float angle)
 {
    return accel * cos(angle);
 }
@@ -96,7 +96,7 @@ float getVertical(float accel, float angle)
  * INPUT  pos        The location of the object (either x or y)
  * OUTPUT newPos     Where the object is now
  *************************************************************************/
-float getDistance(float velocity, float time, float accel, float pos)
+float Inertia::getDistance(float velocity, float time, float accel, float pos)
 {
    return pos + (velocity * time) + (0.5 * accel * time * time);
 }
@@ -109,7 +109,7 @@ float getDistance(float velocity, float time, float accel, float pos)
  * INPUT  time       How much time has passed
  * OUTPUT newVel     How fast the object is now moving
  *************************************************************************/
-float getVelocity(float velocity, float accel, float time)
+float Inertia::getVelocity(float velocity, float accel, float time)
 {
    return velocity + (accel * time);
 }
@@ -146,13 +146,13 @@ Angle Inertia::getAngle()
  * Draw
  * Allows the inertia object to be drawn
  *************************************************************************/
-void Inertia::draw() {};
+void Inertia::draw(bool down) {};
 
 /************************************************************************
  * Move
  * Moves the inertia object
  *************************************************************************/
-void Inertia::move() 
+void Inertia::move(bool left, bool right, bool down) 
 {
    //get the height of the satellite above the Earth and the acceleration gravity causes
    float orbitHeight = heightAboveEarth(pos);

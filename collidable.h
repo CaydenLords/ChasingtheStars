@@ -49,8 +49,8 @@ public:
       radius = 0;
    }
 
-   virtual void draw() {};
-   virtual void move() {};
+   virtual void draw(bool down) {};
+   virtual void move(bool left, bool right, bool down) {};
    //virtual void collide();
 
    //getter 

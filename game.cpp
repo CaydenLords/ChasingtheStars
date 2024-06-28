@@ -11,6 +11,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "collidable.h"
 #include "sputnik.h"
+#include "chaser.h"
 #include <cassert>
 #include <vector>
 
@@ -21,7 +22,8 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
-   collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 0, Position(2050.0, 2684.68)));
+   collidables.push_back(new Chaser(Position(-450.0, 450.0), Angle(0), 10, Position(-2.0, 0.0)));
+   collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 4, Position(2050.0, 2684.68)));
 }
 
 
@@ -29,22 +31,22 @@ Game::Game(Position upperRight) {
   * GAME: RUN PHYSICS 
   * Call each collidable to be moved, then check for collisions, then draw each item. 
   *********************************************/
-void Game::runPhysics()
+void Game::runPhysics(bool left, bool right, bool down)
 {
-   moveInertia();
+   moveInertia(left, right, down);
    checkCollisions();
-   drawBodies();
+   drawBodies(down);
 }
 
 /**********************************************
  * GAME: MOVE INTERTIA
  * Call each collidable to move
  *********************************************/
-void Game::moveInertia()
+void Game::moveInertia(bool left, bool right, bool down)
 {
    for (int i = 0; i < collidables.size(); i++) 
    {
-      collidables[i]->move();
+      collidables[i]->move(left, right,down);
    }
 }
 
@@ -61,12 +63,12 @@ void Game::checkCollisions()
  * GAME: DRAW BODIES
  * Draw every heavenly body in Game. 
  *********************************************/
-void Game::drawBodies()
+void Game::drawBodies(bool down)
 {
-   for (int i = 0; i < collidables.size(); i++) 
-   {
-      collidables[i]->draw();
-   }
    ogstream gout;
    gout.drawEarth(Position(0, 0), 0);
+   for (int i = 0; i < collidables.size(); i++) 
+   {
+      collidables[i]->draw(down);
+   }
 }

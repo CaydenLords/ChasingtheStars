@@ -30,7 +30,7 @@ public:
       speed = move;
    }
 
-   void draw();
+   void draw(bool down);
    //void move();
    void collide();
 

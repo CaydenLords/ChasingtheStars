@@ -43,7 +43,7 @@
  * Draw
  * Allows the Satellite object to be drawn
  *************************************************************************/
-void Satellite::draw() {};
+void Satellite::draw(bool down) {};
 
 /************************************************************************
  * Move

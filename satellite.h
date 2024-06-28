@@ -31,7 +31,7 @@ public:
       speed = move;
    }
 
-   virtual void draw();
+   virtual void draw(bool down);
    //void move();
    virtual void collide();
 

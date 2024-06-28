@@ -131,8 +131,11 @@ void callBack(const Interface* pUI, void* p)
 {
 
    Game* pGame = (Game*)p;
+   bool right = pUI->isRight();
+   bool left = pUI->isLeft();
+   bool down = pUI->isDown();
 
-   pGame->runPhysics();
+   pGame->runPhysics(left, right, down);
 
    //// the first step is to cast the void pointer into a game object. This
    //// is the first step of every single callback function in OpenGL. 

@@ -44,7 +44,7 @@
  * Draw
  * Allows the Sputnik object to be drawn
  *************************************************************************/
-void Sputnik::draw() 
+void Sputnik::draw(bool down) 
 {
    ogstream gout;
    gout.drawSputnik(pos, 0);

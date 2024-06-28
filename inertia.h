@@ -36,8 +36,8 @@ public:
       speed = move;
    }
 
-   virtual void draw();
-     void move();
+   virtual void draw(bool down);
+     void move(bool left, bool right, bool down);
      virtual void collide();
 
 
@@ -45,8 +45,13 @@ public:
    Angle angle;
    Position speed;
 
-private:
-
-
+protected:
+   float gravity(float height);
+   float heightAboveEarth(Position place);
+   float gravityDirection(Position place);
+   float getHorizontal(float accel, float angle);
+   float getVertical(float accel, float angle);
+   float getDistance(float velocity, float time, float accel, float pos);
+   float getVelocity(float velocity, float accel, float time);
 
 };

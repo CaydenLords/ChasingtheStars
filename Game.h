@@ -33,10 +33,10 @@ public:
    Game(Position upperRight);
 
    // Game Runners
-   void runPhysics();
-   void moveInertia();
+   void runPhysics(bool left, bool right, bool down);
+   void moveInertia(bool left, bool right, bool down);
    void checkCollisions();
-   void drawBodies();
+   void drawBodies(bool down);
 protected: 
    //Star[] stars;
    vector<Collidable*> collidables;

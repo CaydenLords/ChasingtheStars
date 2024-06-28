@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="angle.cpp" />
     <ClCompile Include="body.cpp" />
+    <ClCompile Include="chaser.cpp" />
     <ClCompile Include="collidable.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="inertia.cpp" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="angle.h" />
     <ClInclude Include="body.h" />
+    <ClInclude Include="chaser.h" />
     <ClInclude Include="collidable.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="inertia.h" />
