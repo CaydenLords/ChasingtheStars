@@ -54,8 +54,8 @@ void TestInertia::test_getPosition()
 
 /*************************************
   * TEST GET ANGLE : Inertia
-  * Input: 0, 0
-  * Output: 0, 0
+  * Input: 100
+  * Output: 100.0
   **************************************/
 void TestInertia::test_getAngle()
 {
@@ -69,5 +69,153 @@ void TestInertia::test_getAngle()
 
    // VERIFY
    assertUnit(myAngle.getDegrees() == 100.0);
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST MOVE : Inertia
+  * Input: (-36515095.13, 21082000.0)
+  * Output: (-36514424.0,  21081612.0)
+  **************************************/
+void TestInertia::test_move()
+{
+   // SETUP
+   Inertia satellite;
+   satellite.setPosition(-36515095.13, 21082000.0);
+
+  
+   // EXERCISE
+   satellite.move(false, false, false);
+
+   Position posNew = satellite.getPosition();
+   // VERIFY
+   assertUnit(posNew.getMetersX() == -36514424.0);
+   assertUnit(posNew.getMetersY() ==  21081612.0);
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GRAVITY : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_gravity()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST HEIGHT ABOVE EARTH : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_heightAboveEarth()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GRAVITY DIRECTION : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_gravityDirection()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GET HORIZONTAL : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_getHorizontal()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GET VERTICAL : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_getVertical()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GET DIRECTION : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_getDirection()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST GET VELOCITY : Inertia
+  * Input:
+  * Output:
+  **************************************/
+void TestInertia::test_getVelocity()
+{
+   // SETUP
+
+
+   // EXERCISE
+
+
+   // VERIFY
+
    // TEARDOWN
 }
