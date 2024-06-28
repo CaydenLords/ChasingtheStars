@@ -50,7 +50,7 @@
 void Chaser::draw(bool down)
 {
    ogstream gout;
-   gout.drawShip(pos, 0, down);
+   gout.drawShip(pos, angle.getRadians(), down);
 };
 
 /************************************************************************
@@ -74,7 +74,8 @@ void Chaser::draw(bool down)
     float xComp = getHorizontal(orbitGravityAcceleration, gravityAngle);
     float yComp = getVertical(orbitGravityAcceleration, gravityAngle);
     if (down) {
-
+       xComp = xComp + getHorizontal(2.0, angle.getRadians());
+       yComp = yComp + getVertical(2.0, angle.getRadians());
     }
 
     // Update ship's velocity

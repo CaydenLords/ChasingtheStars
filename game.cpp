@@ -22,7 +22,7 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
-   collidables.push_back(new Chaser(Position(-450.0, 450.0), Angle(0), 10, Position(-2.0, 0.0)));
+   collidables.push_back(new Chaser(Position(-57600000.0, 57600000.0), Angle(0), 10, Position(-2.0, 0.0)));
    collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 4, Position(2050.0, 2684.68)));
 }
 
