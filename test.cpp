@@ -18,6 +18,7 @@
 #include "testHubble.h"
 #include "testDragon.h"
 #include "testStarlink.h"
+#include "testChaser.h"
 
 /*****************************************************************
  * TEST RUNNER
@@ -35,4 +36,5 @@ void testRunner()
    TestHubble().run();
    TestDragon().run();
    TestStarlink().run();
+   TestChaser().run();
 }

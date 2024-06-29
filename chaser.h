@@ -14,7 +14,6 @@
 class Chaser : public Satellite
 {
 public:
-
    // Constructors
    Chaser() : Satellite()
    {

@@ -154,6 +154,7 @@
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="starlink.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="testChaser.cpp" />
     <ClCompile Include="testDragon.cpp" />
     <ClCompile Include="testGPS.cpp" />
     <ClCompile Include="testHubble.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="starlink.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="testChaser.h" />
     <ClInclude Include="testCollidable.h" />
     <ClInclude Include="testDragon.h" />
     <ClInclude Include="testGPS.h" />

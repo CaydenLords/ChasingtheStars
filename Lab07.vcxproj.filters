@@ -170,6 +170,9 @@
     <ClInclude Include="testStarlink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="testChaser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
