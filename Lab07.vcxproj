@@ -144,6 +144,7 @@
     <ClCompile Include="chaser.cpp" />
     <ClCompile Include="collidable.cpp" />
     <ClCompile Include="dragon.cpp" />
+    <ClCompile Include="fragile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GPS.cpp" />
     <ClCompile Include="hubble.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="chaser.h" />
     <ClInclude Include="collidable.h" />
     <ClInclude Include="dragon.h" />
+    <ClInclude Include="fragile.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GPS.h" />
     <ClInclude Include="hubble.h" />
