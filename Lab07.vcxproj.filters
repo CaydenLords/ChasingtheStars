@@ -93,6 +93,12 @@
     <ClCompile Include="fragile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fragment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -180,6 +186,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fragile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fragment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

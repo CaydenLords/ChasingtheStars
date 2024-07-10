@@ -152,7 +152,7 @@ void Inertia::draw(bool down) {};
  * Move
  * Moves the inertia object
  *************************************************************************/
-void Inertia::move(bool left, bool right, bool down) 
+bool Inertia::move(bool left, bool right, bool down) 
 {
    //get the height of the satellite above the Earth and the acceleration gravity causes
    float orbitHeight = heightAboveEarth(pos);
@@ -170,6 +170,9 @@ void Inertia::move(bool left, bool right, bool down)
    // Move the Satellite
    pos.setMetersX(getDistance(speed.getMetersX(), TIME_PER_FRAME, xComp, pos.getMetersX()));
    pos.setMetersY(getDistance(speed.getMetersY(), TIME_PER_FRAME, yComp, pos.getMetersY()));
+
+   // return false
+   return false;
 };
 
 /************************************************************************

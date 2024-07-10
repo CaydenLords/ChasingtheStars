@@ -57,7 +57,7 @@ void Chaser::draw(bool down)
  * Move
  * Moves the Chaser object
  *************************************************************************/
- void Chaser::move(bool left, bool right, bool down)
+ bool Chaser::move(bool left, bool right, bool down)
  {
     if (left) {
        angle.setRadians(angle.getRadians() - 0.1);
@@ -85,6 +85,8 @@ void Chaser::draw(bool down)
     // Move the Satellite
     pos.setMetersX(getDistance(speed.getMetersX(), TIME_PER_FRAME, xComp, pos.getMetersX()));
     pos.setMetersY(getDistance(speed.getMetersY(), TIME_PER_FRAME, yComp, pos.getMetersY()));
+
+    return false;
  };
 
  /************************************************************************

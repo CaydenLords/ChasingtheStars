@@ -230,7 +230,7 @@ void ogstream::drawFragment(const Position& center, double rotation)
 {
    ColorRect rects[] =
    {
-      {-4,1, -4,-1, 4,-1, 4,1, RGB_LIGHT_GREY },
+      {-4,1, -4,-1, 4,-1, 4,1, RGB_LIGHT_GREY},
    };
 
    for (int i = 0; i < sizeof(rects) / sizeof(ColorRect); i++)

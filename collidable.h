@@ -50,7 +50,7 @@ public:
    }
 
    virtual void draw(bool down) {};
-   virtual void move(bool left, bool right, bool down) {};
+   virtual bool move(bool left, bool right, bool down) { return false; };
    //virtual void collide();
 
    //getter 

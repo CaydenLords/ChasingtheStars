@@ -21,9 +21,9 @@ public:
       angle = ang;
       radius = rad;
       speed = move;
-      framesLeft = random(50, 100);
+      framesLeft = 10;
    }
-private:
+   bool move(bool left, bool right, bool down);
+protected:
    int framesLeft;
-   }
 };

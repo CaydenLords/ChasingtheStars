@@ -16,6 +16,7 @@
 #include "hubble.h"
 #include "dragon.h"
 #include "starlink.h"
+#include "fragment.h"
 #include <cassert>
 #include <vector>
 
@@ -52,14 +53,17 @@ void Game::runPhysics(bool left, bool right, bool down)
 }
 
 /**********************************************
- * GAME: MOVE INTERTIA
+ * GAME: MOVE INERTIA
  * Call each collidable to move
  *********************************************/
 void Game::moveInertia(bool left, bool right, bool down)
 {
    for (int i = 0; i < collidables.size(); i++) 
    {
-      collidables[i]->move(left, right,down);
+      if (collidables[i]->move(left, right, down) == true) 
+      {
+         collidables.erase(std::next(collidables.begin(), i));
+      }
    }
 }
 

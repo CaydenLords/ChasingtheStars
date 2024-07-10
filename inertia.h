@@ -37,7 +37,7 @@ public:
    }
 
    virtual void draw(bool down);
-   void move(bool left, bool right, bool down);
+   bool move(bool left, bool right, bool down);
    virtual void collide();
 
 
