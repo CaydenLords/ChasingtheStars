@@ -20,7 +20,7 @@
 void TestSputnik::test_setPosition()
 {
    // SETUP
-   Satellite sat;
+   Sputnik sat;
 
    // EXERCISE
    sat.setPosition(0, 0);
@@ -40,8 +40,8 @@ void TestSputnik::test_setPosition()
 void TestSputnik::test_getPosition()
 {
    // SETUP
-   Satellite sat;
-   sat.setPosition(0, 0);
+   Sputnik sat;
+   sat.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = sat.getPosition();
@@ -60,9 +60,8 @@ void TestSputnik::test_getPosition()
 void TestSputnik::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   Sputnik inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();
@@ -71,4 +70,3 @@ void TestSputnik::test_getAngle()
    assertUnit(myAngle.getDegrees() == 100);
    // TEARDOWN
 }
-

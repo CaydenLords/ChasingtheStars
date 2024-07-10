@@ -108,7 +108,7 @@ void TestChaser::test_move2()
    // EXERCISE
    chaser.move(false, false, false);
 
-   Position posNew = chaser.getPosition();
+   Position posNew = chaser.pos;
    // VERIFY
    assertUnit(posNew.getMetersX() == 9995125.0);
    assertUnit(posNew.getMetersY() == 9995125.0);
@@ -129,7 +129,7 @@ void TestChaser::test_move0()
    // EXERCISE
    chaser.move(false, false, false);
 
-   Position posNew = chaser.getPosition();
+   Position posNew = chaser.pos;
    // VERIFY
    assertUnit(posNew.getMetersX() == 0.0);
    assertUnit(round(posNew.getMetersY()) == 8473.0);

@@ -20,7 +20,7 @@
 void TestHubble::test_setPosition()
 {
    // SETUP
-   Satellite sat;
+   Hubble sat;
 
    // EXERCISE
    sat.setPosition(0, 0);
@@ -40,8 +40,8 @@ void TestHubble::test_setPosition()
 void TestHubble::test_getPosition()
 {
    // SETUP
-   Satellite sat;
-   sat.setPosition(0, 0);
+   Hubble sat;
+   sat.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = sat.getPosition();
@@ -60,9 +60,8 @@ void TestHubble::test_getPosition()
 void TestHubble::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   Hubble inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();

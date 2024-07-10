@@ -47,7 +47,7 @@
 void Sputnik::draw(bool down) 
 {
    ogstream gout;
-   gout.drawSputnik(pos, 0);
+   gout.drawSputnik(pos, angle.getDegrees());
 };
 
 /************************************************************************

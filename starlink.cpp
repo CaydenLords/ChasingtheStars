@@ -19,7 +19,7 @@
 void Starlink::draw(bool down)
 {
    ogstream gout;
-   gout.drawStarlink(pos, 0);
+   gout.drawStarlink(pos, angle.getDegrees());
 };
 
 /************************************************************************

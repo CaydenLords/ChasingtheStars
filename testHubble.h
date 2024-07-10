@@ -13,6 +13,7 @@
 #include "satellite.h"
 #include "position.h"
 #include "unitTest.h"
+#include "hubble.h"
 
  /***************************************************
   * HUBBLE TEST

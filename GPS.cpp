@@ -19,7 +19,7 @@
 void GPS::draw(bool down)
 {
    ogstream gout;
-   gout.drawGPS(pos, 0);
+   gout.drawGPS(pos, angle.getDegrees());
 };
 
 /************************************************************************

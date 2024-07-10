@@ -41,7 +41,7 @@ void TestSatellite::test_getPosition()
 {
    // SETUP
    Satellite sat;
-   sat.setPosition(0, 0);
+   sat.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = sat.getPosition();
@@ -60,9 +60,8 @@ void TestSatellite::test_getPosition()
 void TestSatellite::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   Satellite inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();

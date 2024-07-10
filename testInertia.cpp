@@ -41,7 +41,7 @@ void TestInertia::test_getPosition()
 {
    // SETUP
    Inertia inertia;
-   inertia.setPosition(0, 0);
+   inertia.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = inertia.getPosition();
@@ -60,15 +60,14 @@ void TestInertia::test_getPosition()
 void TestInertia::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   Inertia inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();
 
    // VERIFY
-   assertUnit(myAngle.getDegrees() == 100.0);
+   assertUnit(myAngle.getDegrees() == 100);
    // TEARDOWN
 }
 
@@ -81,7 +80,7 @@ void TestInertia::test_move1()
 {
    // SETUP
    Inertia satellite;
-   satellite.setPosition(-36515095.13, 21082000.0);
+   satellite.pos = Position(-36515095.13, 21082000.0);
 
   
    // EXERCISE
@@ -103,7 +102,7 @@ void TestInertia::test_move2()
 {
    // SETUP
    Inertia satellite;
-   satellite.setPosition(10000000.0, 10000000.0);
+   satellite.pos = Position(10000000.0, 10000000.0);
 
    // EXERCISE
    satellite.move(false, false, false);
@@ -124,7 +123,7 @@ void TestInertia::test_move0()
 {
    // SETUP
    Inertia satellite;
-   satellite.setPosition(0.0, 0.0);
+   satellite.pos = Position(0.0, 0.0);
    
    // EXERCISE
    satellite.move(false, false, false);

@@ -20,7 +20,7 @@
 void TestStarlink::test_setPosition()
 {
    // SETUP
-   Satellite sat;
+   Starlink sat;
 
    // EXERCISE
    sat.setPosition(0, 0);
@@ -40,8 +40,8 @@ void TestStarlink::test_setPosition()
 void TestStarlink::test_getPosition()
 {
    // SETUP
-   Satellite sat;
-   sat.setPosition(0, 0);
+   Starlink sat;
+   sat.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = sat.getPosition();
@@ -60,9 +60,8 @@ void TestStarlink::test_getPosition()
 void TestStarlink::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   Starlink inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();

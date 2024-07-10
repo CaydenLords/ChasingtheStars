@@ -19,7 +19,7 @@
 void Hubble::draw(bool down)
 {
    ogstream gout;
-   gout.drawHubble(pos, 0);
+   gout.drawHubble(pos, angle.getDegrees());
 };
 
 /************************************************************************

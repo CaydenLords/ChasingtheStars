@@ -20,7 +20,7 @@
 void TestGPS::test_setPosition()
 {
    // SETUP
-   Satellite sat;
+   GPS sat;
 
    // EXERCISE
    sat.setPosition(0, 0);
@@ -40,8 +40,8 @@ void TestGPS::test_setPosition()
 void TestGPS::test_getPosition()
 {
    // SETUP
-   Satellite sat;
-   sat.setPosition(0, 0);
+   GPS sat;
+   sat.pos = Position(0, 0);
 
    // EXERCISE
    Position myPosition = sat.getPosition();
@@ -60,9 +60,8 @@ void TestGPS::test_getPosition()
 void TestGPS::test_getAngle()
 {
    // SETUP
-   Position location(0, 0);
-   Angle ang(100);
-   Inertia inertia(location, ang);
+   GPS inertia;
+   inertia.angle = Angle(100);
 
    // EXERCISE
    Angle myAngle = inertia.getAngle();

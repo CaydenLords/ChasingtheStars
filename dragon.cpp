@@ -19,7 +19,7 @@
 void Dragon::draw(bool down)
 {
    ogstream gout;
-   gout.drawCrewDragon(pos, 0);
+   gout.drawCrewDragon(pos, angle.getDegrees());
 };
 
 /************************************************************************
