@@ -147,6 +147,7 @@
     <ClCompile Include="DragonCenter.cpp" />
     <ClCompile Include="DragonLeft.cpp" />
     <ClCompile Include="DragonRight.cpp" />
+    <ClCompile Include="Earth.cpp" />
     <ClCompile Include="fragile.cpp" />
     <ClCompile Include="fragment.cpp" />
     <ClCompile Include="game.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="DragonCenter.h" />
     <ClInclude Include="DragonLeft.h" />
     <ClInclude Include="DragonRight.h" />
+    <ClInclude Include="Earth.h" />
     <ClInclude Include="fragile.h" />
     <ClInclude Include="fragment.h" />
     <ClInclude Include="game.h" />

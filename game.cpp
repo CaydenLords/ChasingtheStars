@@ -17,6 +17,8 @@
 #include "dragon.h"
 #include "starlink.h"
 #include "fragment.h"
+#include "Earth.h"
+#include "projectile.h"
 #include <cassert>
 #include <vector>
 
@@ -27,6 +29,7 @@
   * upperRight: The upperRight corner of the screen. Knowing this allows us to randomize the locations of stars or other objects. 
   *********************************************/
 Game::Game(Position upperRight) {
+   collidables.push_back(new Earth());
    collidables.push_back(new Chaser(Position(-57600000.0, 57600000.0), Angle(0), 10, Position(-2.0, 0.0)));
    collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 4, Position(2050.0, 2684.68)));
    collidables.push_back(new GPS(Position(0.0, 26560000.0), Angle(), 12, Position(-3880.0, 0.0)));
@@ -83,7 +86,6 @@ void Game::checkCollisions()
 void Game::drawBodies(bool down)
 {
    ogstream gout;
-   gout.drawEarth(Position(0, 0), 0);
    for (int i = 0; i < collidables.size(); i++) 
    {
       collidables[i]->draw(down);
