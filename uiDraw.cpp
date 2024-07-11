@@ -213,7 +213,7 @@ void ogstream::drawProjectile(const Position& pt)
 {
    ColorRect rects[] =
    {
-      {1,1, -1,1, -1,-1, 1,-1, RGB_WHITE },
+      {1,1, -1,1, -1,-1, 1,-1, RGB_RED },
    };
 
    for (int i = 0; i < sizeof(rects) / sizeof(ColorRect); i++)

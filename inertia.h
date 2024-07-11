@@ -41,10 +41,6 @@ public:
    virtual void collide();
 
 
-   Position pos;
-   Angle angle;
-   Position speed;
-
 protected:
    float gravity(float height);
    float heightAboveEarth(Position place);

@@ -29,5 +29,4 @@ public:
    void draw(bool down);
    bool move(bool left, bool right, bool down);
    void collide();
-
 };

@@ -59,12 +59,14 @@ public:
       return pos;
    }
    //setter 
-   void setPos(Position location) {
+   void setPos(Position location)
+   {
       pos = location;
    }
-
-protected:
+   Position getSpeed() { return speed; }
+   Angle getAngle() { return angle; };
    Position pos;
    int radius;
    Angle angle;
+   Position speed;
 };

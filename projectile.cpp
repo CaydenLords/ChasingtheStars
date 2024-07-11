@@ -19,7 +19,7 @@
 void Projectile::draw(bool down)
 {
    ogstream gout;
-   gout.drawFragment(pos, angle.getDegrees());
+   gout.drawProjectile(pos);
 };
 
 /************************************************************************

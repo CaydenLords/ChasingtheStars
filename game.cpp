@@ -6,7 +6,7 @@
  * Summary:
  *    This contains everything we need in order to run the simulation.
  ************************************************************************/
-
+#pragma once
 #include "game.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "collidable.h"
@@ -48,11 +48,12 @@ Game::Game(Position upperRight) {
   * GAME: RUN PHYSICS 
   * Call each collidable to be moved, then check for collisions, then draw each item. 
   *********************************************/
-void Game::runPhysics(bool left, bool right, bool down)
+void Game::runPhysics(bool left, bool right, bool down, bool space)
 {
    moveInertia(left, right, down);
    checkCollisions();
    drawBodies(down);
+   addProjectiles(space);
 }
 
 /**********************************************
@@ -89,5 +90,21 @@ void Game::drawBodies(bool down)
    for (int i = 0; i < collidables.size(); i++) 
    {
       collidables[i]->draw(down);
+   }
+}
+
+/**********************************************
+ * GAME: ADD PROJECTILES
+ * Shoots a projectile 
+ *********************************************/
+void Game::addProjectiles(bool space)
+{
+   if (space) 
+   {
+      if (chaserAlive) 
+      {
+         collidables.push_back(new Projectile(rotate(collidables[1]->getPos(), 0.0, 19.0, collidables[1]->getAngle().getRadians()),
+            collidables[1]->getAngle(), 1, rotate(collidables[1]->getSpeed(), 0.0, 0.08, collidables[1]->getAngle().getRadians())));
+      }
    }
 }

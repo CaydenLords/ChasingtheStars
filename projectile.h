@@ -28,7 +28,7 @@ public:
       angle = ang;
       radius = rad;
       speed = move;
-      framesLeft = 70;
+      framesLeft = 700000;
    }
 
    void draw(bool down);
