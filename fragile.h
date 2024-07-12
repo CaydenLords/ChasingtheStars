@@ -15,7 +15,13 @@
 
 class Fragile : public Inertia {
 public:
-   Fragile() : Inertia() {}
+   Fragile() : Inertia() {
+      pos = Position(0,0);
+      angle = Angle(0);
+      radius = 1;
+      speed = Position(0,0);
+      framesLeft = 10;
+   }
    Fragile(Position location, Angle ang, int rad, Position move) : Inertia(location, ang, rad, move) {
       pos = location;
       angle = ang;
@@ -24,6 +30,5 @@ public:
       framesLeft = 10;
    }
    bool move(bool left, bool right, bool down);
-protected:
    int framesLeft;
 };

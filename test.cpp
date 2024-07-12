@@ -19,6 +19,21 @@
 #include "testDragon.h"
 #include "testStarlink.h"
 #include "testChaser.h"
+#include "testFragile.h"
+#include "testProjectile.h"
+#include "testFragment.h"
+#include "testDragonLeft.h"
+#include "testDragonCenter.h"
+#include "testDragonRight.h"
+#include "testGPSLeft.h"
+#include "testGPSCenter.h"
+#include "testGPSRight.h"
+#include "testHubbleLeft.h"
+#include "testHubbleRight.h"
+#include "testHubbleComputer.h"
+#include "testHubbleScope.h"
+#include "testStarlinkBody.h"
+#include "testStarlinkArray.h"
 
 /*****************************************************************
  * TEST RUNNER
@@ -33,8 +48,23 @@ void testRunner()
    TestSatellite().run();
    TestSputnik().run();
    TestGPS().run();
+   TestGPSLeft().run();
+   TestGPSCenter().run();
+   TestGPSRight().run();
    TestHubble().run();
+   TestHubbleLeft().run();
+   TestHubbleRight().run();
+   TestHubbleComputer().run();
+   TestHubbleScope().run();
    TestDragon().run();
+   TestDragonLeft().run();
+   TestDragonCenter().run();
+   TestDragonRight().run();
    TestStarlink().run();
+   TestStarlinkBody().run();
+   TestStarlinkArray().run();
    TestChaser().run();
+   TestFragile().run();
+   TestProjectile().run();
+   TestFragment().run();
 }
