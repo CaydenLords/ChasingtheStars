@@ -54,8 +54,3 @@ void Satellite::draw(bool down) {};
 //   Inertia::move();
 //};
 
-/************************************************************************
- * Collide
- * Checks if the Satellite object has collided with another object
- *************************************************************************/
-void Satellite::collide() {};

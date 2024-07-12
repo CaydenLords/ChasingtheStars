@@ -35,4 +35,8 @@ void GPS::draw(bool down)
   * Collide
   * Checks if the GPS object has collided with another object
   *************************************************************************/
-void GPS::collide() {};
+std::vector<Collidable> GPS::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

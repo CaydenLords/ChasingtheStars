@@ -35,4 +35,8 @@ void StarlinkBody::draw(bool down)
   * Collide
   * Checks if the Hubble object has collided with another object
   *************************************************************************/
-void StarlinkBody::collide() {};
+std::vector<Collidable> StarlinkBody::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

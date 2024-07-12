@@ -1,5 +1,8 @@
 #include "collidable.h"
 
-//Collidable::Collide()
-//{
-//}
+std::vector<Collidable> Collidable::collide()
+{
+   std::vector<Collidable> objects;
+   
+   return objects;
+}

@@ -35,4 +35,8 @@ void HubbleComputer::draw(bool down)
   * Collide
   * Checks if the Hubble object has collided with another object
   *************************************************************************/
-void HubbleComputer::collide() {};
+std::vector<Collidable> HubbleComputer::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

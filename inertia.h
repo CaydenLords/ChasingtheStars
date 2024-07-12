@@ -12,6 +12,7 @@
 #include <cmath>
 #include "body.h"
 #include "collidable.h"
+#include <vector>
 
 class Inertia : public Collidable
 {
@@ -40,7 +41,6 @@ public:
 
    virtual void draw(bool down);
    bool move(bool left, bool right, bool down);
-   virtual std::vector<Collidable> collide();
 
 
 protected:

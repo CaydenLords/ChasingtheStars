@@ -35,4 +35,8 @@ void GPSCenter::draw(bool down)
   * Collide
   * Checks if the GPS object has collided with another object
   *************************************************************************/
-void GPSCenter::collide() {};
+std::vector<Collidable> GPSCenter::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

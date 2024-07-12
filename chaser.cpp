@@ -93,4 +93,8 @@ void Chaser::draw(bool down)
   * Collide
   * Checks if the Chaser object has collided with another object
   *************************************************************************/
-void Chaser::collide() {};
+ std::vector<Collidable> Chaser::collide() 
+ {
+    std::vector<Collidable> objects;
+    return objects;
+ };

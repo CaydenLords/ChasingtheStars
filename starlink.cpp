@@ -35,4 +35,8 @@ void Starlink::draw(bool down)
   * Collide
   * Checks if the Starlink object has collided with another object
   *************************************************************************/
-void Starlink::collide() {};
+std::vector<Collidable> Starlink::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

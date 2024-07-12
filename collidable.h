@@ -15,6 +15,7 @@
 #include "position.h"
 #include "body.h"
 #include "angle.h"
+#include <vector>
 
 class TestCollidable;
 class Acceleration;
@@ -54,7 +55,7 @@ public:
 
    virtual void draw(bool down) {};
    virtual bool move(bool left, bool right, bool down) { return false; };
-   //virtual void collide();
+   virtual std::vector<Collidable> collide();
 
    //getter 
    Position getPos()

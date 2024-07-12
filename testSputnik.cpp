@@ -10,6 +10,7 @@
 #include "testSputnik.h"
 #include "inertia.h"
 #include "position.h"
+#include "satellite.h"
 #include <cassert>
 
  /*************************************
@@ -68,5 +69,24 @@ void TestSputnik::test_getAngle()
 
    // VERIFY
    assertUnit(myAngle.getDegrees() == 100);
+   // TEARDOWN
+}
+
+/*************************************
+  * TEST COLLIDE : Sputnik
+  * Input: 0, 0
+  * Output: 0, 0
+  **************************************/
+void TestSputnik::test_collide()
+{
+   // SETUP
+   Sputnik probe(Position(1000, 1000), Angle(100), 0, Position(200, 200), 4);
+   std::vector<Collidable> myObjects;
+
+   // EXERCISE
+   myObjects = probe.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 4);
    // TEARDOWN
 }

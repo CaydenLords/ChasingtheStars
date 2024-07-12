@@ -10,6 +10,7 @@
 
 #include <iostream> 
 #include "inertia.h"
+#include "fragment.h"
 
 class Satellite : public Inertia
 {
@@ -35,7 +36,8 @@ public:
 
    virtual void draw(bool down);
    //void move();
-   virtual std::vector<Collidable> collide();
 
+protected:
+   int fragments;
 
 };

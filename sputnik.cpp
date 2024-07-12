@@ -66,5 +66,13 @@ void Sputnik::draw(bool down)
  *************************************************************************/
 std::vector<Collidable> Sputnik::collide()
 {
-   
+   std::vector<Collidable> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment piece(pos, angle, radius, speed, 0);
+      objects.push_back(piece);
+   }
+
+   return objects;
 };

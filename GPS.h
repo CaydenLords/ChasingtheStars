@@ -33,6 +33,8 @@ public:
 
    void draw(bool down);
    //void move();
-   void collide();
+   std::vector<Collidable> collide() override;
 
+protected:
+   int fragments;
 };

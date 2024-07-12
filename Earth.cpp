@@ -34,6 +34,10 @@ bool Earth::move(bool left, bool right, bool down)
 
  /************************************************************************
   * Collide
-  * Checks if the Hubble object has collided with another object
+  * Checks if the Earth object has collided with another object
   *************************************************************************/
-void Earth::collide() {};
+std::vector<Collidable> Earth::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};

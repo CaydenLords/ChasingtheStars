@@ -174,9 +174,3 @@ bool Inertia::move(bool left, bool right, bool down)
    // return false
    return false;
 };
-
-/************************************************************************
- * Collide
- * Checks if the inertia object has collided with another object
- *************************************************************************/
-void Inertia::collide() {};

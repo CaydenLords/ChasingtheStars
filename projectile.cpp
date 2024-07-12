@@ -26,4 +26,8 @@ void Projectile::draw(bool down)
  * Collide
  * Checks if the Fragment object has collided with another object
  *************************************************************************/
-void Projectile::collide() {};
+std::vector<Collidable> Projectile::collide() 
+{
+   std::vector<Collidable> objects;
+   return objects;
+};
