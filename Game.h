@@ -38,6 +38,7 @@ public:
    void checkCollisions();
    void drawBodies(bool down);
    void addProjectiles(bool space);
+   bool hasCollided(Collidable* a, Collidable* b);
 protected: 
    //Star[] stars;
    vector<Collidable*> collidables;

@@ -77,7 +77,32 @@ void Game::moveInertia(bool left, bool right, bool down)
  *********************************************/
 void Game::checkCollisions()
 {
+   for (size_t i = 0; i < collidables.size(); i++)
+   {
+      for (size_t j = i + 1; j < collidables.size(); j++)
+      {
+         if (hasCollided(collidables[i], collidables[j]))
+         {
+            std::vector<Collidable*> new1 = collidables[i]->collide();
+            std::vector<Collidable*> new2 = collidables[j]->collide();
 
+
+
+            // Remove the collided objects from the list
+            delete collidables[j];
+            delete collidables[i];
+            collidables.erase(collidables.begin() + j);
+            collidables.erase(collidables.begin() + i);
+
+            collidables.insert(collidables.end(), new1.begin(), new1.end());
+            collidables.insert(collidables.end(), new2.begin(), new2.end());
+
+            // Adjust the indices
+            if (i > 0) i--;
+            break;
+         }
+      }
+   }
 }
 
 /**********************************************
@@ -107,4 +132,16 @@ void Game::addProjectiles(bool space)
             collidables[1]->getAngle(), 1, rotate(collidables[1]->getSpeed(), 0.0, 0.08, collidables[1]->getAngle().getRadians()), 0));
       }
    }
+}
+
+/**********************************************
+ * GAME: HAS COLLIDED
+ * Detects collisions between objects
+ *********************************************/
+bool Game::hasCollided(Collidable* a, Collidable* b)
+{
+   double dx = a->pos.getMetersX() - b->pos.getMetersX();
+   double dy = a->pos.getMetersY() - b->pos.getMetersY();
+   double distance = std::sqrt(dx * dx + dy * dy);
+   return distance <= (a->radius + b->radius);
 }

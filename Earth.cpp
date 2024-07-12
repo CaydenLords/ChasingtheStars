@@ -36,8 +36,8 @@ bool Earth::move(bool left, bool right, bool down)
   * Collide
   * Checks if the Earth object has collided with another object
   *************************************************************************/
-std::vector<Collidable> Earth::collide() 
+std::vector<Collidable*> Earth::collide()
 {
-   std::vector<Collidable> objects;
+   std::vector<Collidable*> objects;
    return objects;
 };

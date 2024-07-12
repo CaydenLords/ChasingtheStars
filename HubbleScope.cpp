@@ -35,8 +35,8 @@ void HubbleScope::draw(bool down)
   * Collide
   * Checks if the Hubble object has collided with another object
   *************************************************************************/
-std::vector<Collidable> HubbleScope::collide() 
+std::vector<Collidable*> HubbleScope::collide()
 {
-   std::vector<Collidable> objects;
+   std::vector<Collidable*> objects;
    return objects;
 };

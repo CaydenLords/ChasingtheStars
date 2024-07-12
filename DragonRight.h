@@ -33,7 +33,7 @@ public:
 
    void draw(bool down);
    //void move();
-   std::vector<Collidable> collide() override;
+   std::vector<Collidable*> collide() override;
 
 };
 

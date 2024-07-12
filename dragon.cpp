@@ -35,8 +35,8 @@ void Dragon::draw(bool down)
   * Collide
   * Checks if the Dragon object has collided with another object
   *************************************************************************/
-std::vector<Collidable> Dragon::collide() 
+std::vector<Collidable*> Dragon::collide()
 {
-   std::vector<Collidable> objects;
+   std::vector<Collidable*> objects;
    return objects;
 };

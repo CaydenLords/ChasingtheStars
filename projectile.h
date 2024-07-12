@@ -33,5 +33,5 @@ public:
    }
 
    void draw(bool down);
-   std::vector<Collidable> collide() override;
+   std::vector<Collidable*> collide() override;
 };

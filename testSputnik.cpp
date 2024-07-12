@@ -81,7 +81,7 @@ void TestSputnik::test_collide()
 {
    // SETUP
    Sputnik probe(Position(1000, 1000), Angle(100), 0, Position(200, 200), 4);
-   std::vector<Collidable> myObjects;
+   std::vector<Collidable*> myObjects;
 
    // EXERCISE
    myObjects = probe.collide();

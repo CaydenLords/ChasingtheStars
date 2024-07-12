@@ -29,5 +29,5 @@ public:
 
    void draw(bool down);
    bool move(bool left, bool right, bool down);
-   std::vector<Collidable> collide() override;
+   std::vector<Collidable*> collide() override;
 };
