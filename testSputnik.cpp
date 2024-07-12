@@ -74,8 +74,8 @@ void TestSputnik::test_getAngle()
 
 /*************************************
   * TEST COLLIDE : Sputnik
-  * Input: 0, 0
-  * Output: 0, 0
+  * Input: Collision scenario
+  * Output: List of new objects
   **************************************/
 void TestSputnik::test_collide()
 {

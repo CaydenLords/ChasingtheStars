@@ -10,6 +10,10 @@
 #include "position.h"
 #include "satellite.h"
 #include "GPS.h"
+#include "GPSCenter.h"
+#include "GPSLeft.h"
+#include "GPSRight.h"
+#include "fragment.h"
 #include "uiDraw.h"
 
  /************************************************************************
@@ -38,5 +42,20 @@ void GPS::draw(bool down)
 std::vector<Collidable*> GPS::collide()
 {
    std::vector<Collidable*> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment* piece = new Fragment(pos, angle, 2, speed, 0);
+      objects.push_back(piece);
+   }
+
+   GPSCenter* center = new GPSCenter(pos, angle, 7, speed, 0);
+   GPSLeft* left = new GPSLeft(pos, angle, 8, speed, 0);
+   GPSRight* right = new GPSRight(pos, angle, 8, speed, 0);
+
+   objects.push_back(center);
+   objects.push_back(left);
+   objects.push_back(right);
+
    return objects;
 };
