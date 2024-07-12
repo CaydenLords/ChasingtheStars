@@ -22,12 +22,14 @@ public:
       speed = Position(0,0);
       framesLeft = 10;
    }
-   Fragile(Position location, Angle ang, int rad, Position move) : Inertia(location, ang, rad, move) {
+   Fragile(Position location, Angle ang, int rad, Position move, int pieces) : Inertia(location, ang, rad, move, pieces)
+   {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
       framesLeft = 10;
+      fragments = pieces;
    }
    bool move(bool left, bool right, bool down);
    int framesLeft;

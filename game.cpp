@@ -30,17 +30,17 @@
   *********************************************/
 Game::Game(Position upperRight) {
    collidables.push_back(new Earth());
-   collidables.push_back(new Chaser(Position(-57600000.0, 57600000.0), Angle(0), 10, Position(-2.0, 0.0)));
-   collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 4, Position(2050.0, 2684.68)));
-   collidables.push_back(new GPS(Position(0.0, 26560000.0), Angle(), 12, Position(-3880.0, 0.0)));
-   collidables.push_back(new GPS(Position(23001634.72, 13280000.0), Angle(0), 12, Position(-1940.00, 3360.18)));
-   collidables.push_back(new GPS(Position(23001634.72, -13280000.0), Angle(0), 12, Position(1940.00, 3360.18)));
-   collidables.push_back(new GPS(Position(0.0, -26560000.0), Angle(0), 12, Position(3880.0, 0.0)));
-   collidables.push_back(new GPS(Position(-23001634.72, -13280000.0), Angle(0), 12, Position(1940.00, -3360.18)));
-   collidables.push_back(new GPS(Position(-23001634.72, 13280000.0), Angle(0), 12, Position(-1940.00, -3360.18)));
-   collidables.push_back(new Hubble(Position(0.0, -42164000.0), Angle(0), 10, Position(3100.0, 0.0)));
-   collidables.push_back(new Dragon(Position(0.0, 8000000.0), Angle(0), 7, Position(-7900.0, 0.0)));
-   collidables.push_back(new Starlink(Position(0.0, -13020000.0), Angle(0), 6, Position(5800.0, 0.0)));
+   collidables.push_back(new Chaser(Position(-57600000.0, 57600000.0), Angle(0), 10, Position(-2.0, 0.0), 0));
+   collidables.push_back(new Sputnik(Position(-36515095.13, 21082000.0), Angle(0), 4, Position(2050.0, 2684.68), 4));
+   collidables.push_back(new GPS(Position(0.0, 26560000.0), Angle(), 12, Position(-3880.0, 0.0), 3));
+   collidables.push_back(new GPS(Position(23001634.72, 13280000.0), Angle(0), 12, Position(-1940.00, 3360.18), 3));
+   collidables.push_back(new GPS(Position(23001634.72, -13280000.0), Angle(0), 12, Position(1940.00, 3360.18), 3));
+   collidables.push_back(new GPS(Position(0.0, -26560000.0), Angle(0), 12, Position(3880.0, 0.0), 3));
+   collidables.push_back(new GPS(Position(-23001634.72, -13280000.0), Angle(0), 12, Position(1940.00, -3360.18), 3));
+   collidables.push_back(new GPS(Position(-23001634.72, 13280000.0), Angle(0), 12, Position(-1940.00, -3360.18), 3));
+   collidables.push_back(new Hubble(Position(0.0, -42164000.0), Angle(0), 10, Position(3100.0, 0.0), 0));
+   collidables.push_back(new Dragon(Position(0.0, 8000000.0), Angle(0), 7, Position(-7900.0, 0.0), 2));
+   collidables.push_back(new Starlink(Position(0.0, -13020000.0), Angle(0), 6, Position(5800.0, 0.0), 2));
 }
 
 
@@ -104,7 +104,7 @@ void Game::addProjectiles(bool space)
       if (chaserAlive) 
       {
          collidables.push_back(new Projectile(rotate(collidables[1]->getPos(), 0.0, 19.0, collidables[1]->getAngle().getRadians()),
-            collidables[1]->getAngle(), 1, rotate(collidables[1]->getSpeed(), 0.0, 0.08, collidables[1]->getAngle().getRadians())));
+            collidables[1]->getAngle(), 1, rotate(collidables[1]->getSpeed(), 0.0, 0.08, collidables[1]->getAngle().getRadians()), 0));
       }
    }
 }

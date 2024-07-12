@@ -18,12 +18,13 @@ public:
    Chaser() : Satellite()
    {
    }
-   Chaser(Position location, Angle ang, int rad, Position move) : Satellite(location, ang, rad, move)
+   Chaser(Position location, Angle ang, int rad, Position move, int pieces) : Satellite(location, ang, rad, move, pieces)
    {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
+      fragments = pieces;
    }
 
    void draw(bool down);

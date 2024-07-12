@@ -29,16 +29,18 @@ public:
       pos = location;
       angle = ang;
    }
-   Inertia(Position location, Angle ang, int rad, Position move){
+   Inertia(Position location, Angle ang, int rad, Position move, int pieces)
+   {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
+      fragments = pieces;
    }
 
    virtual void draw(bool down);
    bool move(bool left, bool right, bool down);
-   virtual void collide();
+   virtual std::vector<Collidable> collide();
 
 
 protected:

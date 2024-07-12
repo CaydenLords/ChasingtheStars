@@ -24,16 +24,18 @@ public:
       pos = location;
       angle = ang;
    }
-   Satellite(Position location, Angle ang, int rad, Position move): Inertia(location, ang, rad, move){
+   Satellite(Position location, Angle ang, int rad, Position move, int pieces): Inertia(location, ang, rad, move, pieces)
+   {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
+      fragments = pieces;
    }
 
    virtual void draw(bool down);
    //void move();
-   virtual void collide();
+   virtual std::vector<Collidable> collide();
 
 
 };

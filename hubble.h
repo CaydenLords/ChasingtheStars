@@ -22,12 +22,13 @@ public:
       angle = Angle(0);
       speed = Position(3100.0, 0.0);
    }
-   Hubble(Position location, Angle ang, int rad, Position move) : Satellite(location, ang, rad, move)
+   Hubble(Position location, Angle ang, int rad, Position move, int pieces) : Satellite(location, ang, rad, move, pieces)
    {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
+      fragments = pieces;
    }
 
    void draw(bool down);

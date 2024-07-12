@@ -22,13 +22,14 @@ public:
       angle = Angle(0);
       speed = Position(0.0, 0.0);
    }
-   Projectile(Position location, Angle ang, int rad, Position move) : Fragile(location, ang, rad, move)
+   Projectile(Position location, Angle ang, int rad, Position move, int pieces) : Fragile(location, ang, rad, move, pieces)
    {
       pos = location;
       angle = ang;
       radius = rad;
       speed = move;
       framesLeft = 70;
+      fragments = pieces;
    }
 
    void draw(bool down);

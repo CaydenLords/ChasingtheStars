@@ -11,6 +11,7 @@
 #include "satellite.h"
 #include "sputnik.h"
 #include "uiDraw.h"
+#include <vector>
 
 // /************************************************************************
 //  * Set Position
@@ -61,6 +62,9 @@ void Sputnik::draw(bool down)
 
 /************************************************************************
  * Collide
- * Checks if the Sputnik object has collided with another object
+ * Handles what happens after Sputnik hits something
  *************************************************************************/
-void Sputnik::collide() {};
+std::vector<Collidable> Sputnik::collide()
+{
+   
+};

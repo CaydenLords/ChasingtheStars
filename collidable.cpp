@@ -1,5 +1,5 @@
 #include "collidable.h"
 
-//Collidable::Collidable()
+//Collidable::Collide()
 //{
 //}

@@ -62,7 +62,7 @@ void TestChaser::test_getAngle()
    // SETUP
    Position location(0, 0);
    Angle ang(100);
-   Chaser chaser(location, ang, 10, location);
+   Chaser chaser(location, ang, 10, location, 0);
 
    // EXERCISE
    Angle myAngle = chaser.getAngle();
@@ -148,7 +148,7 @@ void TestChaser::test_turnLeft()
    Position location(0, 0);
    Angle ang;
    ang.setRadians(1);
-   Chaser chaser(location, ang, 10, location);
+   Chaser chaser(location, ang, 10, location, 0);
    // EXERCISE
    chaser.move(true, false, false);
    // VERIFY
@@ -168,7 +168,7 @@ void TestChaser::test_turnRight()
    Position location(0, 0);
    Angle ang;
    ang.setRadians(0);
-   Chaser chaser(location, ang, 10, location);
+   Chaser chaser(location, ang, 10, location, 0);
    // EXERCISE
    chaser.move(false, true, false);
    // VERIFY

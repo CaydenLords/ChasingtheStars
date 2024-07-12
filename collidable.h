@@ -35,18 +35,21 @@ public:
       pos = Position(0, 0);
       angle = 0;
       radius = 0;
+      fragments = 0;
    }
    Collidable(Position location, int rad)
    {
       pos = location;
       angle = Angle(0);
       radius = rad;
+      fragments = 0;
    }
-   Collidable(Position location, Angle myAngle)
+   Collidable(Position location, Angle myAngle, int pieces)
    {
       pos = location;
       angle = myAngle;
       radius = 0;
+      fragments = pieces;
    }
 
    virtual void draw(bool down) {};
@@ -69,4 +72,5 @@ public:
    int radius;
    Angle angle;
    Position speed;
+   int fragments;
 };
