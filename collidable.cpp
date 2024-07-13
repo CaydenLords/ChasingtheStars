@@ -1,6 +1,7 @@
 #include "collidable.h"
 #include "fragment.h"
 #include <random>
+#define M_PI 3.14159265358979323846
 
 std::vector<Collidable*> Collidable::collide()
 {
@@ -37,27 +38,7 @@ std::vector<Collidable*> Collidable::makeFragments(int frags)
       Position newerSpeed(newSpeed, speed.getMetersY());
 
       // New position
-      Position newPos;
-      if (0 <= angle.getDegrees() && angle.getDegrees() <= 89)
-      {
-         newPos.setMetersX(pos.getMetersX());
-         newPos.setMetersY(pos.getMetersY() + 4);
-      }
-      else if (90 <= angle.getDegrees() && angle.getDegrees() <= 179)
-      {
-         newPos.setMetersX(pos.getMetersX() + 4);
-         newPos.setMetersY(pos.getMetersY());
-      }
-      else if (180 <= angle.getDegrees() && angle.getDegrees() <= 269)
-      {
-         newPos.setMetersX(pos.getMetersX());
-         newPos.setMetersY(pos.getMetersY() - 4);
-      }
-      else
-      {
-         newPos.setMetersX(pos.getMetersX() - 4);
-         newPos.setMetersY(pos.getMetersY());
-      }
+      Position newPos = rotate(pos, 4, 4, randAngle.getDegrees() * M_PI / 180.0);
       
 
       Fragment* piece = new Fragment(newPos, randAngle, 2, newerSpeed, 0);
