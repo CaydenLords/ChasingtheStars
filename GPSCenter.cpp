@@ -38,5 +38,12 @@ void GPSCenter::draw(bool down)
 std::vector<Collidable*> GPSCenter::collide()
 {
    std::vector<Collidable*> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment* piece = new Fragment(pos, angle, 2, speed, 3);
+      objects.push_back(piece);
+   }
+
    return objects;
 };

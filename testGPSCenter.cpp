@@ -71,3 +71,22 @@ void TestGPSCenter::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : GPSCENTER
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestGPSCenter::test_collide()
+{
+   // SETUP
+   GPSCenter module(Position(1000, 1000), Angle(100), 0, Position(200, 200), 3);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 3);
+   // TEARDOWN
+}
+

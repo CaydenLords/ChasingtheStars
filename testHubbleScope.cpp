@@ -71,3 +71,21 @@ void TestHubbleScope::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : HUBBLESCOPE
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestHubbleScope::test_collide()
+{
+   // SETUP
+   HubbleScope module(Position(1000, 1000), Angle(100), 0, Position(200, 200), 3);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 3);
+   // TEARDOWN
+}

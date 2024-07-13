@@ -71,3 +71,21 @@ void TestStarlink::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : STARLINK
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestStarlink::test_collide()
+{
+   // SETUP
+   Starlink module(Position(1000, 1000), Angle(100), 6, Position(200, 200), 2);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 4);
+   // TEARDOWN
+}

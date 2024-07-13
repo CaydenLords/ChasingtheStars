@@ -71,3 +71,21 @@ void TestDragonLeft::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : DRAGONLEFT
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestDragonLeft::test_collide()
+{
+   // SETUP
+   DragonLeft module(Position(1000, 1000), Angle(100), 0, Position(200, 200), 2);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 2);
+   // TEARDOWN
+}

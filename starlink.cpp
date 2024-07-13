@@ -10,6 +10,8 @@
 #include "position.h"
 #include "satellite.h"
 #include "starlink.h"
+#include "starlinkArray.h"
+#include "starlinkBody.h"
 #include "uiDraw.h"
 
  /************************************************************************
@@ -38,5 +40,18 @@ void Starlink::draw(bool down)
 std::vector<Collidable*> Starlink::collide()
 {
    std::vector<Collidable*> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment* piece = new Fragment(pos, angle, 2, speed, 0);
+      objects.push_back(piece);
+   }
+
+   StarlinkArray* array = new StarlinkArray(pos, angle, 4, speed, 3);
+   StarlinkBody* body = new StarlinkBody(pos, angle, 2, speed, 3);
+
+   objects.push_back(array);
+   objects.push_back(body);
+
    return objects;
 };

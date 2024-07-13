@@ -38,5 +38,12 @@ void HubbleRight::draw(bool down)
 std::vector<Collidable*> HubbleRight::collide()
 {
    std::vector<Collidable*> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment* piece = new Fragment(pos, angle, 2, speed, 0);
+      objects.push_back(piece);
+   }
+
    return objects;
 };

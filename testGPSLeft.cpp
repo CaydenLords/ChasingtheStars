@@ -71,3 +71,21 @@ void TestGPSLeft::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : GPSLEFT
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestGPSLeft::test_collide()
+{
+   // SETUP
+   GPSLeft module(Position(1000, 1000), Angle(100), 0, Position(200, 200), 3);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 3);
+   // TEARDOWN
+}

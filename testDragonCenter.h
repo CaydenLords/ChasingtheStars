@@ -27,6 +27,7 @@ public:
       test_getPosition();
       test_setPosition();
       test_getAngle();
+      test_collide();
       report("DragonCenter");
    }
 
@@ -34,5 +35,5 @@ private:
    void test_getPosition();
    void test_setPosition();
    void test_getAngle();
-
+   void test_collide();
 };

@@ -71,3 +71,21 @@ void TestDragonCenter::test_getAngle()
    // TEARDOWN
 }
 
+/*************************************
+  * TEST COLLIDE : DRAGONCENTER
+  * Input: Collision scenario
+  * Output: List of new objects
+  **************************************/
+void TestDragonCenter::test_collide()
+{
+   // SETUP
+   DragonCenter module(Position(1000, 1000), Angle(100), 0, Position(200, 200), 4);
+   std::vector<Collidable*> myObjects;
+
+   // EXERCISE
+   myObjects = module.collide();
+
+   // VERIFY
+   assertUnit(myObjects.size() == 4);
+   // TEARDOWN
+}

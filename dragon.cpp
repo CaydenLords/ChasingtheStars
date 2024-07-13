@@ -10,6 +10,9 @@
 #include "position.h"
 #include "satellite.h"
 #include "dragon.h"
+#include "DragonCenter.h"
+#include "DragonLeft.h"
+#include "DragonRight.h"
 #include "uiDraw.h"
 
  /************************************************************************
@@ -38,5 +41,20 @@ void Dragon::draw(bool down)
 std::vector<Collidable*> Dragon::collide()
 {
    std::vector<Collidable*> objects;
+
+   for (int i = 0; i < fragments; i++)
+   {
+      Fragment* piece = new Fragment(pos, angle, 2, speed, 0);
+      objects.push_back(piece);
+   }
+   
+   DragonCenter* center = new DragonCenter(pos, angle, 6, speed, 4);
+   DragonLeft* left = new DragonLeft(pos, angle, 6, speed, 2);
+   DragonRight* right = new DragonRight(pos, angle, 6, speed, 2);
+
+   objects.push_back(center);
+   objects.push_back(left);
+   objects.push_back(right);
+
    return objects;
 };
