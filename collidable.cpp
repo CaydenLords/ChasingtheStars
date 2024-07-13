@@ -25,15 +25,9 @@ std::vector<Collidable*> Collidable::makeFragments(int frags)
       // New angle
       Angle randAngle(random(0, 360));
       int randSpeed = (random(5000, 9000));
-      //int randPositive = random(1, 2);
-      //if (randPositive == 1) {
-      //   randSpeed = randSpeed * -1;
-      //}
 
       // New speed
-      int oldSpeed = speed.getMetersX();
-      int newSpeed = oldSpeed + randSpeed;
-      Position newerSpeed(newSpeed, speed.getMetersY());
+      Position newerSpeed = rotate(speed, 0, randSpeed/12800, randAngle.getRadians());
 
       // New position
       Position newPos = rotate(pos, 0, 16, randAngle.getRadians());

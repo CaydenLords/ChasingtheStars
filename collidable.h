@@ -15,6 +15,7 @@
 #include "position.h"
 #include "body.h"
 #include "angle.h"
+#include "uiDraw.h"
 #include <vector>
 
 class TestCollidable;
