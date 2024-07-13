@@ -13,7 +13,7 @@ std::vector<Collidable*> Collidable::collide()
  * makeFragment
  * Creates fragments for objects which collide
  *************************************************************************/
-std::vector<Collidable*> Collidable::makeFragments(int frags)
+std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> pieces, int frags)
 {
    std::vector<Collidable*> newFrags;
 
@@ -37,6 +37,8 @@ std::vector<Collidable*> Collidable::makeFragments(int frags)
       newFrags.push_back(piece);
    }
 
-    return newFrags;
+   newFrags.insert(newFrags.end(), pieces.begin(), pieces.end());
+
+   return newFrags;
 
 }

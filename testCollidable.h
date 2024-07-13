@@ -142,8 +142,9 @@ private:
    {
       // setup
       Collidable collidable(Position(100,100), Angle(0), 4);
+      std::vector<Collidable*> empty;
       // exercise
-      std::vector<Collidable*> objects = collidable.makeFragments(collidable.fragments);
+      std::vector<Collidable*> objects = collidable.makeFragments(empty, collidable.fragments);
       // verify
       assertUnit(objects.size() == 4);
       // teardown
