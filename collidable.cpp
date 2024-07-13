@@ -27,7 +27,7 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
       int randSpeed = (random(5000, 9000));
 
       // New speed
-      Position newerSpeed = rotate(speed, 0, randSpeed/12800, randAngle.getRadians());
+      Position newerSpeed = rotate(speed, 0, randSpeed, randAngle.getRadians());
 
       // New position
       Position newPos = rotate(pos, 0, 16, randAngle.getRadians());
