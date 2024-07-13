@@ -16,7 +16,28 @@ std::vector<Collidable*> Collidable::collide()
 std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> pieces, int frags)
 {
    std::vector<Collidable*> newFrags;
+   for (int i = 0; i < pieces.size(); i++)
+   {
 
+      Collidable* currentPiece = pieces[i];
+      // Create a new angle, speed, and position for the fragment
+      // New angle
+      Angle randAngle(random(0, 360));
+      int randSpeed = (random(5000, 9000));
+      if (speed.getMetersY() < 0) {
+         randSpeed = randSpeed * -1;
+      }
+
+      // New speed
+      Position newerSpeed = rotate(speed, 0, randSpeed / 51200, randAngle.getRadians());
+
+      // New position
+      Position newPos = rotate(pos, 0, 16, randAngle.getRadians());
+
+      currentPiece->setPos(newPos);
+      currentPiece->setSpeed(newerSpeed);
+      currentPiece->setAngle(randAngle);
+   }
    for (int i = 0; i < frags; i++)
    {
 

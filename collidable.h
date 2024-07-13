@@ -70,7 +70,9 @@ public:
       pos = location;
    }
    Position getSpeed() { return speed; }
+   void setSpeed(Position newSpeed) { speed = newSpeed; }
    Angle getAngle() { return angle; };
+   void setAngle(Angle newAngle) { angle = newAngle; };
    Position pos;
    int radius;
    Angle angle;
