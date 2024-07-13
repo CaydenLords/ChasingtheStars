@@ -28,6 +28,6 @@ void Fragment::draw(bool down)
   *************************************************************************/
 std::vector<Collidable*> Fragment::collide()
 {
-   std::vector<Collidable*> objects;
-   return objects;
+    std::vector<Collidable*> objects;
+    return objects;
 };
