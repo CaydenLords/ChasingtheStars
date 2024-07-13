@@ -87,12 +87,25 @@ void Game::checkCollisions()
             std::vector<Collidable*> new2 = collidables[j]->collide();
 
 
-
-            // Remove the collided objects from the list
-            delete collidables[j];
-            delete collidables[i];
-            collidables.erase(collidables.begin() + j);
-            collidables.erase(collidables.begin() + i);
+            
+            // Remove the collided objects from the list, exclude the Earth
+            if (collidables[j]->radius != 160)
+            {
+               delete collidables[j];
+            }
+            if (collidables[i]->radius != 160)
+            {
+               delete collidables[i];
+            }
+            if (collidables[j]->radius != 160)
+            {
+                collidables.erase(collidables.begin() + j);
+            }
+            if (collidables[i]->radius != 160)
+            {
+               collidables.erase(collidables.begin() + i);
+            }
+            
 
             collidables.insert(collidables.end(), new1.begin(), new1.end());
             collidables.insert(collidables.end(), new2.begin(), new2.end());
@@ -140,8 +153,14 @@ void Game::addProjectiles(bool space)
  *********************************************/
 bool Game::hasCollided(Collidable* a, Collidable* b)
 {
-   double dx = a->pos.getMetersX() - b->pos.getMetersX();
-   double dy = a->pos.getMetersY() - b->pos.getMetersY();
-   double distance = std::sqrt(dx * dx + dy * dy);
-   return distance <= (a->radius + b->radius);
+   double xPos = a->pos.getMetersX() - b->pos.getMetersX();
+   double yPos = a->pos.getMetersY() - b->pos.getMetersY();
+   double distance = std::sqrt(xPos * xPos + yPos * yPos);
+
+   double aRadiusMeters = a->radius * 128000.0;
+   double bRadiusMeters = b->radius * 128000.0;
+
+   //return distance <= (a->radius + b->radius);
+
+   return distance <= (aRadiusMeters + bRadiusMeters);
 }
