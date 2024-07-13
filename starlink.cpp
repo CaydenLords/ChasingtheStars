@@ -49,7 +49,5 @@ std::vector<Collidable*> Starlink::collide()
 
    std::vector<Collidable*> newFragments = makeFragments(objects, fragments);
 
-   newFragments.insert(objects.end(), newFragments.begin(), newFragments.end());
-
    return newFragments;
 };
