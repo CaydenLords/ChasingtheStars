@@ -86,15 +86,13 @@ void Game::checkCollisions()
             std::vector<Collidable*> new1 = collidables[i]->collide();
             std::vector<Collidable*> new2 = collidables[j]->collide();
 
-            // Check if one of the objects is dream chaser
+            // Check if one of the objects is dream chaser based on its radius
             if (collidables[i]->radius == 10 || collidables[j]->radius == 10)
             {
                chaserAlive = false;
             }
 
-
-            
-            // Remove the collided objects from the list, exclude the Earth
+            // Remove the collided objects from the list, exclude the Earth based on its radius
             if (collidables[j]->radius != 50)
             {
                delete collidables[j];
@@ -165,8 +163,6 @@ bool Game::hasCollided(Collidable* a, Collidable* b)
 
    double aRadiusMeters = a->radius * 128000.0;
    double bRadiusMeters = b->radius * 128000.0;
-
-   //return distance <= (a->radius + b->radius);
 
    return distance <= (aRadiusMeters + bRadiusMeters);
 }
