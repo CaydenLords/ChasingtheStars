@@ -23,13 +23,10 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
       // Create a new angle, speed, and position for the piece
       // New angle
       Angle randAngle(random(0, 360));
-      int randSpeed = (random(5000, 9000));
-      if (speed.getMetersY() < 0) {
-         randSpeed = randSpeed * -1;
-      }
-
+      int randSpeed = random(5000, 9000);
       // New speed
-      Position newerSpeed = rotate(speed, 0, randSpeed / 51200, randAngle.getRadians());
+      Position newSpeed = Position((sin(randAngle.getRadians())*randSpeed),(cos(randAngle.getRadians()) * randSpeed));
+      Position newerSpeed = Position(speed.getMetersX() + newSpeed.getMetersX(), speed.getMetersY() + newSpeed.getMetersY());
 
       // New position
       Position newPos = rotate(pos, 0, 16, randAngle.getRadians());
@@ -45,13 +42,10 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
       // Create a new angle, speed, and position for the fragment
       // New angle
       Angle randAngle(random(0, 360));
-      int randSpeed = (random(5000, 9000));
-      if (speed.getMetersY() < 0) {
-         randSpeed = randSpeed * -1;
-      }
-
+      int randSpeed = random(5000, 9000);
       // New speed
-      Position newerSpeed = rotate(speed, 0, randSpeed/51200, randAngle.getRadians());
+      Position newSpeed = Position((sin(randAngle.getRadians()) * randSpeed), (cos(randAngle.getRadians()) * randSpeed));
+      Position newerSpeed = Position(speed.getMetersX() + newSpeed.getMetersX(), speed.getMetersY() + newSpeed.getMetersY());
 
       // New position
       Position newPos = rotate(pos, 0, 16, randAngle.getRadians());
