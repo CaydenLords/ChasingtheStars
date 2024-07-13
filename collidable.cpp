@@ -40,5 +40,4 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
    newFrags.insert(newFrags.end(), pieces.begin(), pieces.end());
 
    return newFrags;
-
 }
