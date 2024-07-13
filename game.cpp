@@ -95,19 +95,19 @@ void Game::checkCollisions()
 
             
             // Remove the collided objects from the list, exclude the Earth
-            if (collidables[j]->radius != 160)
+            if (collidables[j]->radius != 50)
             {
                delete collidables[j];
             }
-            if (collidables[i]->radius != 160)
+            if (collidables[i]->radius != 50)
             {
                delete collidables[i];
             }
-            if (collidables[j]->radius != 160)
+            if (collidables[j]->radius != 50)
             {
                 collidables.erase(collidables.begin() + j);
             }
-            if (collidables[i]->radius != 160)
+            if (collidables[i]->radius != 50)
             {
                collidables.erase(collidables.begin() + i);
             }

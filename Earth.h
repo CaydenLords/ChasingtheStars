@@ -20,7 +20,7 @@ public:
    {
       pos = Position(0, 0);
       angle = Angle(0);
-      radius = 160;
+      radius = 50;
    }
    Earth(Position location, Angle ang)
    {
