@@ -86,6 +86,12 @@ void Game::checkCollisions()
             std::vector<Collidable*> new1 = collidables[i]->collide();
             std::vector<Collidable*> new2 = collidables[j]->collide();
 
+            // Check if one of the objects is dream chaser
+            if (collidables[i]->radius == 10 || collidables[j]->radius == 10)
+            {
+               chaserAlive = false;
+            }
+
 
             
             // Remove the collided objects from the list, exclude the Earth
