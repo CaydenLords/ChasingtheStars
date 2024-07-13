@@ -53,5 +53,9 @@ std::vector<Collidable*> Hubble::collide()
    objects.push_back(right);
    objects.push_back(scope);
 
-   return objects;
+   std::vector<Collidable*> newFragments = makeFragments(objects, fragments);
+
+   newFragments.insert(objects.end(), newFragments.begin(), newFragments.end());
+
+   return newFragments;
 };

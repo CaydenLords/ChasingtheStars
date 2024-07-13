@@ -43,10 +43,6 @@ std::vector<Collidable*> GPS::collide()
 {
    std::vector<Collidable*> objects;
 
-   std::vector<Collidable*> newFragments = makeFragments(fragments);
-
-   objects.insert(objects.end(), newFragments.begin(), newFragments.end());
-
    GPSCenter* center = new GPSCenter(pos, angle, 7, speed, 0);
    GPSLeft* left = new GPSLeft(pos, angle, 8, speed, 0);
    GPSRight* right = new GPSRight(pos, angle, 8, speed, 0);
@@ -55,5 +51,9 @@ std::vector<Collidable*> GPS::collide()
    objects.push_back(left);
    objects.push_back(right);
 
-   return objects;
+   std::vector<Collidable*> newFragments = makeFragments(objects, fragments);
+
+   newFragments.insert(objects.end(), newFragments.begin(), newFragments.end());
+
+   return newFragments;
 };

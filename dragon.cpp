@@ -41,10 +41,6 @@ void Dragon::draw(bool down)
 std::vector<Collidable*> Dragon::collide()
 {
    std::vector<Collidable*> objects;
-
-   std::vector<Collidable*> newFragments = makeFragments(fragments);
-
-   objects.insert(objects.end(), newFragments.begin(), newFragments.end());
    
    DragonCenter* center = new DragonCenter(pos, angle, 6, speed, 4);
    DragonLeft* left = new DragonLeft(pos, angle, 6, speed, 2);
@@ -54,5 +50,9 @@ std::vector<Collidable*> Dragon::collide()
    objects.push_back(left);
    objects.push_back(right);
 
-   return objects;
+   std::vector<Collidable*> newFragments = makeFragments(objects, fragments);
+
+   newFragments.insert(objects.end(), newFragments.begin(), newFragments.end());
+
+   return newFragments;
 };
