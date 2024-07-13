@@ -23,6 +23,7 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
 
       // Create a new angle, speed, and position for the fragment
       // New angle
+      Position oldSpeed = speed;
       Angle randAngle(random(0, 360));
       int randSpeed = (random(5000, 9000));
 
