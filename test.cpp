@@ -34,6 +34,7 @@
 #include "testHubbleScope.h"
 #include "testStarlinkBody.h"
 #include "testStarlinkArray.h"
+#include "testGame.h"
 
 /*****************************************************************
  * TEST RUNNER
@@ -67,4 +68,5 @@ void testRunner()
    TestFragile().run();
    TestProjectile().run();
    TestFragment().run();
+   TestGame().run();
 }

@@ -177,6 +177,7 @@
     <ClCompile Include="testDragonRight.cpp" />
     <ClCompile Include="testFragile.cpp" />
     <ClCompile Include="testFragment.cpp" />
+    <ClCompile Include="testGame.cpp" />
     <ClCompile Include="testGPS.cpp" />
     <ClCompile Include="testGPSCenter.cpp" />
     <ClCompile Include="testGPSLeft.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="testDragonRight.h" />
     <ClInclude Include="testFragile.h" />
     <ClInclude Include="testFragment.h" />
+    <ClInclude Include="testGame.h" />
     <ClInclude Include="testGPS.h" />
     <ClInclude Include="testGPSCenter.h" />
     <ClInclude Include="testGPSLeft.h" />

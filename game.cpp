@@ -157,8 +157,8 @@ void Game::addProjectiles(bool space)
  *********************************************/
 bool Game::hasCollided(Collidable* a, Collidable* b)
 {
-   double xPos = a->pos.getMetersX() - b->pos.getMetersX();
-   double yPos = a->pos.getMetersY() - b->pos.getMetersY();
+   double xPos = a->getPos().getMetersX() - b->getPos().getMetersX();
+   double yPos = a->getPos().getMetersY() - b->getPos().getMetersY();
    double distance = std::sqrt(xPos * xPos + yPos * yPos);
 
    double aRadiusMeters = a->radius * 128000.0;
