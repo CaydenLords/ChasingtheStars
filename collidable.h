@@ -56,6 +56,7 @@ public:
    virtual void draw(bool down) {};
    virtual bool move(bool left, bool right, bool down) { return false; };
    virtual std::vector<Collidable*> collide();
+   virtual std::vector<Collidable*> makeFragments(int frags);
 
    //getter 
    Position getPos()

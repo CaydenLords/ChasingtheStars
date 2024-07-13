@@ -35,10 +35,12 @@ public:
       setPositionZero();
       setPositionNegative();
       setPositionFortyTwo();
+      test_makeFragments();
       report("Collidable");
    }
 private:
-   void defaultConstructor() {
+   void defaultConstructor() 
+   {
       // setup
       // exercise
       Collidable collidable;
@@ -73,7 +75,8 @@ private:
       assertUnit(collidable.pos == Position(42, 42));
       // teardown
    }
-   void getPositionZero() {
+   void getPositionZero() 
+   {
       // setup
       Collidable collidable;
       collidable.pos = Position(0, 0);
@@ -83,7 +86,8 @@ private:
       assertUnit(pos == Position(0, 0));
       // teardown
    }
-   void getPositionNegative() {
+   void getPositionNegative() 
+   {
       // setup
       Collidable collidable;
       collidable.pos = Position(-100, -100);
@@ -93,7 +97,8 @@ private:
       assertUnit(pos == Position(-100, -100));
       // teardown
    }
-   void getPositionFortyTwo() {
+   void getPositionFortyTwo() 
+   {
       // setup
       Collidable collidable;
       collidable.pos = Position(42, 42);
@@ -103,7 +108,8 @@ private:
       assertUnit(pos == Position(42, 42));
       // teardown
    }
-   void setPositionZero() {
+   void setPositionZero() 
+   {
       // setup
       Collidable collidable;
       // exercise
@@ -112,7 +118,8 @@ private:
       assertUnit(collidable.pos == Position(0, 0));
       // teardown
    }
-   void setPositionNegative() {
+   void setPositionNegative() 
+   {
       // setup
       Collidable collidable;
       // exercise
@@ -121,7 +128,8 @@ private:
       assertUnit(collidable.pos == Position(-100, -100));
       // teardown
    }
-   void setPositionFortyTwo() {
+   void setPositionFortyTwo() 
+   {
       // setup
       Collidable collidable;
       // exercise
@@ -129,5 +137,16 @@ private:
       // verify
       assertUnit(collidable.pos == Position(42, 42));
       // teardown
+   }
+   void test_makeFragments()
+   {
+      // setup
+      Collidable collidable(Position(100,100), Angle(0), 4);
+      // exercise
+      std::vector<Collidable*> objects = collidable.makeFragments(collidable.fragments);
+      // verify
+      assertUnit(objects.size() == 4);
+      // teardown
+
    }
 };

@@ -39,11 +39,9 @@ std::vector<Collidable*> HubbleRight::collide()
 {
    std::vector<Collidable*> objects;
 
-   for (int i = 0; i < fragments; i++)
-   {
-      Fragment* piece = new Fragment(pos, angle, 2, speed, 0);
-      objects.push_back(piece);
-   }
+   std::vector<Collidable*> newFragments = makeFragments(fragments);
+
+   objects.insert(objects.end(), newFragments.begin(), newFragments.end());
 
    return objects;
 };
