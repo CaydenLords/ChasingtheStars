@@ -20,7 +20,7 @@ std::vector<Collidable*> Collidable::makeFragments(std::vector<Collidable*> piec
    {
 
       Collidable* currentPiece = pieces[i];
-      // Create a new angle, speed, and position for the fragment
+      // Create a new angle, speed, and position for the piece
       // New angle
       Angle randAngle(random(0, 360));
       int randSpeed = random(5000, 9000);

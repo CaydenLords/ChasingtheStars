@@ -55,18 +55,15 @@ void TestGame::test_hasCollidedFalse()
    ptUpperRight.setPixelsY(1000.0);
    Game game(ptUpperRight);
    std::vector<Collidable*> objects;
-   objects.push_back(new Collidable(Position(1000000, 10000), 5));
-   objects.push_back(new Collidable(Position(-1000000, -10000), 5));
+   objects.push_back(new Collidable(Position(10000000, 1000000), 5));
+   objects.push_back(new Collidable(Position(-1000000000, -1000000000), 10));
 
    Collidable* sat1 = objects.at(0);
    Collidable* sat2 = objects.at(1);
 
-   double xPos = sat1->getPos().getMetersX() - sat2->getPos().getMetersX();
-   double yPos = sat1->getPos().getMetersY() - sat2->getPos().getMetersY();
-   double distance = std::sqrt(xPos * xPos + yPos * yPos);
-
    // exercise
    bool collided = game.hasCollided(sat1, sat2);
+
    // verify
    assertUnit(collided == false);
    // teardown
