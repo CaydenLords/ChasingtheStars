@@ -27,8 +27,7 @@ void TestSputnik::test_setPosition()
    sat.setPosition(0, 0);
 
    // VERIFY
-   assertUnit(sat.pos.getMetersX() == 0);
-   assertUnit(sat.pos.getMetersY() == 0);
+   assertUnit(sat.pos == Position(0, 0));
    // TEARDOWN
 
 }

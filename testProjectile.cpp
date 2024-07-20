@@ -26,8 +26,7 @@ void TestProjectile::test_setPosition()
    inertia.setPosition(0, 0);
 
    // VERIFY
-   assertUnit(inertia.pos.getMetersX() == 0);
-   assertUnit(inertia.pos.getMetersY() == 0);
+   assertUnit(inertia.pos == Position(0, 0));
    // TEARDOWN
 
 }
@@ -88,8 +87,7 @@ void TestProjectile::test_move1()
 
    Position posNew = satellite.getPosition();
    // VERIFY
-   assertUnit(posNew.getMetersX() == -36514424.0);
-   assertUnit(posNew.getMetersY() == 21081612.0);
+   assertUnit(posNew == Position(-36514424.0, 21081612.0));
    // TEARDOWN
 }
 
@@ -109,8 +107,7 @@ void TestProjectile::test_move2()
 
    Position posNew = satellite.getPosition();
    // VERIFY
-   assertUnit(posNew.getMetersX() == 9995125.0);
-   assertUnit(posNew.getMetersY() == 9995125.0);
+   assertUnit(posNew == Position(9995125.0, 9995125.0));
    // TEARDOWN
 }
 

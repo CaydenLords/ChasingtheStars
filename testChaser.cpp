@@ -66,7 +66,7 @@ void TestChaser::test_getAngle()
 
    // EXERCISE
    Angle myAngle = chaser.getAngle();
-
+   
    // VERIFY
    assertUnit(myAngle.getDegrees() == 100.0);
    // TEARDOWN
@@ -89,8 +89,7 @@ void TestChaser::test_move1()
 
    Position posNew = chaser.getPosition();
    // VERIFY
-   assertUnit(posNew.getMetersX() == -36514424.0);
-   assertUnit(posNew.getMetersY() == 21081612.0);
+   assertUnit(posNew == Position(-36514424.0, 21081612.0));
    // TEARDOWN
 }
 
@@ -110,8 +109,7 @@ void TestChaser::test_move2()
 
    Position posNew = chaser.pos;
    // VERIFY
-   assertUnit(posNew.getMetersX() == 9995125.0);
-   assertUnit(posNew.getMetersY() == 9995125.0);
+   assertUnit(posNew == Position(9995125.0, 9995125.0));
    // TEARDOWN
 }
 
@@ -130,6 +128,7 @@ void TestChaser::test_move0()
    chaser.move(false, false, false);
 
    Position posNew = chaser.pos;
+
    // VERIFY
    assertUnit(posNew.getMetersX() == 0.0);
    assertUnit(round(posNew.getMetersY()) == 8473.0);
